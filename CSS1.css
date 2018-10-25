@@ -1,1 +1,10 @@
 /* CSS1.css */
+
+* {
+	background-color: black;
+}
+
+h3 {
+	color: white;
+}
+
