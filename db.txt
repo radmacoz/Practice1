@@ -1,0 +1,5 @@
+ 작업 공간 디렉토리로 이동> .metadata 폴더 열기>
+ .plugins 폴더 열기> 
+ "org.eclipse.datatools.sqltools.result"폴더 열기.
+ "result"파일을 삭제하십시오.
+ 제품을 다시 시작한 후 다시 시도하십시오. 
