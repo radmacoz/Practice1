@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="downloadns">
+	<resultMap type="download" id="downloadResult">
+		<result property="charge_num"	 column="charge_num" />
+		<result property="mem_id" 		 column="mem_id" />
+		<result property="charge_date" 	 column="charge_date" />
+		<result property="charge_option_num" 	 column="charge_option_num" />
+		<result property="charge_account" 	 	 column="charge_account" />
+	</resultMap>
+</mapper>
