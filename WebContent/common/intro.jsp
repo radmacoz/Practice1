@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>판도라 박스에 오신 것을 환영합니다</title>
 <style type="text/css">
 #top {
 	text-align: center;
@@ -33,13 +33,14 @@ img {
 	margin-left: 10px;
 	text-align: center;
 	font-size: 10px;
-	float: left;
-	list-style: none;
+	float: center;
+	list-style-type: none;
 }
 
 #category ul li {
-	float: left;
+	display: inline;
 	margin: 20px;
+	font-size: 15px;
 }
 </style>
 </head>

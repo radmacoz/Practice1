@@ -1,0 +1,8 @@
+@charset "UTF-8";
+body { background-color: #ffff80;}
+table { background-color: #ff8040; width: 100%}
+th, td	{ padding: 8px;}
+caption	{ font-size: 25px; font-weight: bold;
+				line-height: 150%;}
+tr:hover	{ background-color: green; color: white;
+				cursor: pointer;	}
