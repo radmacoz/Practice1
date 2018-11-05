@@ -5,27 +5,28 @@
 	<resultMap type="member" id="memberResult">
 		<result property="mem_id"		 column="mem_id" />
 		<result property="mem_passwd" column="mem_passwd" />
+		<result property="mem_name" column="mem_name" />
+		<result property="mem_email" column="mem_email" />
 		<result property="mem_tel" 		 column="mem_tel" />
 		<result property="mem_addr" 	 column="mem_addr" />
 		<result property="mem_birth" 	 column="mem_birth" />
 		<result property="mem_reg_date" column="mem_reg_date" />
 		<result property="mem_update_date" 	 column="mem_update_date" />
 		<result property="mem_point"	 column="mem_point" />
-		<result property="mem_vip" 		 column="mem_vip" />
 		<result property="mem_del" 		 column="mem_del" />
+		<result property="mem_vip" 		 column="mem_vip" />
 	</resultMap>
-	<!-- <select id="select" parameterType="string" resultType="member">
-		select * from member2 where id=#{id}
+	<select id="select" parameterType="string" resultType="member">
+		select * from member where mem_id=#{mem_id}
 	</select>
-	<update id="update" parameterType="member">
+	<!-- <update id="update" parameterType="member">
 		update member2 set password=#{password}, name=#{name},
 		address=#{address}, tel=#{tel}, update_date=sysdate where id=#{id}
 	</update>
 	<update id="delete" parameterType="string">
 		update member2 set del='y' where id=#{id}
-	</update>
+	</update> -->
 	<insert id="insert" parameterType="member">
-		insert into member2 values (#{id}, #{password}, #{name},
-			#{address}, #{tel}, sysdate, sysdate, 'n')
-	</insert> -->
+		insert into member values ( #{mem_id}, #{mem_passwd}, #{mem_name}, #{mem_email}, #{mem_tel}, #{mem_addr}, #{mem_birth}, sysdate, sysdate, 2, 'n', 'n')
+	</insert>
 </mapper>

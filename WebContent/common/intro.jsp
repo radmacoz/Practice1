@@ -7,26 +7,32 @@
 <title>판도라 박스에 오신 것을 환영합니다</title>
 <style type="text/css">
 #top {
-	text-align: center;
+	text-align: right;
+	font-size: 12px;
 	height: 20px;
 	background-color: #BDBDBD;
 }
 
-img {
+#logo	{
+	width: 120px;
+	height: 80px;
 	float: left;
-	margin-top: 15px;
-	margin-left: 50px;
+	margin-top: 10px;
+	margin-left: 200px;
 }
 
 #search {
-	margin-top: 40px;
 	margin-left: 10px;
+	margin-top: 50px;
+	float: left;
 	border: 3px solid navy;
+	width: 480px;
 }
 
 #category {
 	width: 90%;
-	margin: auto;
+	margin-top: 20px;
+	float: left;
 }
 
 #category ul {
@@ -49,7 +55,7 @@ img {
 		또다른 세상의 시작. 판도라의 상자가 열리다.&nbsp;&nbsp;&nbsp;&nbsp;
 		<a	href="chargeForm.do">캐시 충전</a> || <a href="myPage.do">내정보 관리</a>
 	</div>
-	<a href="main.do"><img alt="" src="images/2010.jpg" width="120" height="80"></a>
+	<div id="logo"><a href="main.do"><img alt="" src="images/2010.jpg" width="120" height="80"></a></div>
 	<div id="search">
 		<select>
 			<option>전체</option>
@@ -64,9 +70,10 @@ img {
 			<option>전체</option>
 			<option>작성자</option>
 			<option>제목</option>
-		</select> <input type="text" size="40" placeholder="검색한 후에 새로운 정렬을 이용해보세요">
+		</select> <input type="text" size="35" placeholder="검색한 후에 새로운 정렬을 이용해보세요">
+		<input type="button" value="검색">
 	</div>
-	
+
 	<div id="category">
 		<ul>
 			<li><a href="main.do?category=all">인기탑10</a></li>

@@ -7,7 +7,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	table	{ width: 90%; margin: 15px 10px 15px 10px;	}
+	table	{ width: 90%; margin-top: 10px;}
+	table tbody {
+	font-size: 14px;
+}
 </style>
 </head>
 <body>

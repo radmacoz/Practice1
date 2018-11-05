@@ -5,11 +5,11 @@
 	<properties resource="db.properties" />
 	<typeAliases>
 		<typeAlias alias="member" type="pandora.model.Member" />
-		<typeAlias alias="file" type="pandora.model.FileUp"/>
+	<!-- 	<typeAlias alias="file" type="pandora.model.FileUp"/>
 		<typeAlias alias="download" type="pandora.model.Download"/>
 		<typeAlias alias="charge" type="pandora.model.Charge"/>
 		<typeAlias alias="charge_op" type="pandora.model.Charge_option"/>
-		<typeAlias alias="req_board" type="pandora.model.Req_Board"/>
+		<typeAlias alias="req_board" type="pandora.model.Req_Board"/> -->
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -24,10 +24,10 @@
 	</environments>
 	<mappers>
 		<mapper resource="member.xml" />
-		<mapper resource="file.xml" />
+	<!-- 	<mapper resource="file.xml" />
 		<mapper resource="download.xml" />
 		<mapper resource="charge.xml" />
 		<mapper resource="charge_op.xml" />
-		<mapper resource="req_board.xml" />
+		<mapper resource="req_board.xml" /> -->
 	</mappers>
 </configuration>
