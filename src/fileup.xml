@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="downloadns">
-	<resultMap type="download" id="downloadResult">
+<mapper namespace="fileupns">
+	<resultMap type="fileup" id="fileupResult">
 		<result property="file_num"	 	 column="file_num" />
 		<result property="file_name" 		 column="file_name" />
 		<result property="category" 	 	 column="category" />
 		<result property="mem_id" 	 	 column="mem_id" />
+		<result property="file_desc" 	 	 column="file_desc" />
+		<result property="file_shot" 	 	 column="file_shot" />
+		<result property="file_upload" 	 column="file_upload" />
+		<result property="file_size" 	 	 column="file_size" />
 		<result property="file_point" 	 	 column="file_point" />
 		<result property="file_date" 		 column="file_date" />
+		<result property="file_del" 	 	 	 column="file_del" />
 	</resultMap>
+	<select id="list" resultMap="fileupResult">
+		select * from fileup
+	</select>
+	<insert id="insert">
+		<selectKey keyProperty="file_num" order="BEFORE" resultType="int">
+			select nvl(max(file_num),0)+1 from fileup
+		</selectKey>
+		select * from fileup #{file_num}
+	</insert>
 </mapper>

@@ -64,17 +64,21 @@ article {
 		<div align="right">
 			<a href="joinForm.lo">무료회원가입</a>
 		</div>
-		<br> <a href="chargeForm.do">캐시충전</a> <br> <a
-			href="reqBoardList.do">자료요청 게시판</a> <br> 고객상담 <br> <a
-			href="vipApplyForm.do"> 판매자 신청</a> <br> <a href="chargeForm.do">사은
-			행사(배너 넣을 것)</a> <br>
+		<br>
+		<a href="chargeForm.do">캐시충전</a> <br>
+		<a href="reqBoardList.do">자료요청	게시판</a> <br>
+		고객상담 <br>
+		<a href="vipApplyForm.do">판매자 신청</a> <br>
+		<a href="chargeForm.do">사은 행사(배너 넣을 것)</a> <br>
+		<a href="fileUploadForm.up">파일 업로드(이건 판매자로 로그인 했을시만)</a> <br>
 	</div>
 	<article>
 		<%-- <jsp:include page="../uploadfile/"+"${pgm }"/> --%>
 		<%-- <c:set var="path" value="${pageContext.request.contextPath }"></c:set>
 		<jsp:include page="${path }/"></jsp:include>
 		<jsp:include page="${param.pgm }"></jsp:include> --%>
-		<jsp:include page="../uploadfile/fileList.jsp"></jsp:include>
+		<jsp:include page="../uploadfile/introList.jsp"></jsp:include>
+		<a href="fileList.up">파일목록</a>
 	</article>
 </body>
 </html>
