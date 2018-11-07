@@ -13,7 +13,7 @@
 	<tr><th>제목</th><th>분류</th><th>포인트</th>
 		<th>용량</th><th>판매자</th></tr>
 <c:forEach var="fileup" items="${list}">
-	<tr><td>${fileup.file_name }</td><td>${fileup.category }</td>
+	<tr><td><a href="fileSelect.up?file_num=${fileup.file_num }">${fileup.file_name }</a></td><td>${fileup.category }</td>
 		<td>${fileup.file_point }</td><td>${fileup.file_size }</td><td>${fileup.mem_id }</td></tr>
 </c:forEach>
 </table>

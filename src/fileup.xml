@@ -18,10 +18,16 @@
 	<select id="list" resultMap="fileupResult">
 		select * from fileup
 	</select>
-	<insert id="insert">
+	
+	<select id="select" parameterType="int" resultType="fileup">
+		select * from fileup where file_num=#{file_num}
+	</select>
+	
+	<insert id="insert" parameterType="fileup">
 		<selectKey keyProperty="file_num" order="BEFORE" resultType="int">
 			select nvl(max(file_num),0)+1 from fileup
 		</selectKey>
-		select * from fileup #{file_num}
+		insert into fileup values ( #{file_num}, #{file_name}, #{category}, #{mem_id}, #{file_desc}, #{file_shot}, #{file_upload}, #{file_size}, #{file_point}, sysdate, 'n')
 	</insert>
+	
 </mapper>

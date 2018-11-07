@@ -28,15 +28,23 @@ public class FileUpDao {
 			System.out.println("session생성 : "+e.getMessage());
 		}
 	}
-	
+	/*파일리스트 불러오는 메소드*/
 	public List<FileUp> list() {
 		return session.selectList("fileupns.list");
 	}
-	/* 고쳐야 할 sql 목록
+	/*파일 업로드하여 삽입하는 메소드*/
+	public int insert(FileUp file) {
+		return session.insert("fileupns.insert", file);
+	}
+	/*파일 번호에 해당하는 파일 객체 선택하는 메소드*/
+	public FileUp select(int file_num) {
+		return (FileUp) session.selectOne("fileupns.select", file_num);
+	}
+
+	/* 참고 메소드 목록
 	public FileUp select(String id) {
 		return (FileUp) session.selectOne("memberns.select", id);
 	}
-	
 	public int update(FileUp member) {
 		return session.update("memberns.update", member);
 	}

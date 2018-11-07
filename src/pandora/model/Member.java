@@ -12,9 +12,16 @@ public class Member {
 	private Date mem_reg_date;
 	private Date mem_update_date;
 	private int mem_point;
-	private String mem_vip;
 	private String mem_del;
+	private String mem_vip;
+	private String mem_vip_app;
 	
+	public String getMem_vip_app() {
+		return mem_vip_app;
+	}
+	public void setMem_vip_app(String mem_vip_app) {
+		this.mem_vip_app = mem_vip_app;
+	}
 	public String getMem_id() {
 		return mem_id;
 	}

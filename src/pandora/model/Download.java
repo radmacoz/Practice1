@@ -7,6 +7,7 @@ public class Download {
 	private int down_num;
 	private int file_num;
 	private Date down_date;
+	private String mem_id;
 	public int getDown_num() {
 		return down_num;
 	}
@@ -31,5 +32,4 @@ public class Download {
 	public void setMem_id(String mem_id) {
 		this.mem_id = mem_id;
 	}
-	private String mem_id;
 }

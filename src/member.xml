@@ -27,6 +27,6 @@
 		update member2 set del='y' where id=#{id}
 	</update> -->
 	<insert id="insert" parameterType="member">
-		insert into member values ( #{mem_id}, #{mem_passwd}, #{mem_name}, #{mem_email}, #{mem_tel}, #{mem_addr}, #{mem_birth}, sysdate, sysdate, 2, 'n', 'n')
+		insert into member values ( #{mem_id}, #{mem_passwd}, #{mem_name}, #{mem_email}, #{mem_tel}, #{mem_addr}, #{mem_birth}, sysdate, sysdate, 2, 'n', 'n', 'n')
 	</insert>
 </mapper>
