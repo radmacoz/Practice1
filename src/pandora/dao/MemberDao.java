@@ -39,4 +39,8 @@ public class MemberDao {
 	public int insert(Member member) {
 		return session.insert("memberns.insert", member);
 	}
+	
+	public int charge(Member member) {
+		return session.update("memberns.charge", member);
+	}
 }

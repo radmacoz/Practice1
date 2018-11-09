@@ -1,17 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-
-
 <meta charset="UTF-8">
 <title>판도라 박스에 오신 것을 환영합니다</title>
 <style type="text/css">
-body	{
+body {
 	width: 950px;
 }
+
 #sidemenu {
 	width: 250px;
 	height: 300px;
@@ -19,6 +18,7 @@ body	{
 	margin-left: 20px;
 	margin-top: 30px;
 	border: 1px solid green;
+	border-radius: 10px;
 	text-align: center;
 	background-color: white;
 }
@@ -42,12 +42,12 @@ article {
 	margin-left: 20px;
 	margin-top: 30px;
 	border: 2px solid red;
+	border-radius: 10px;
 }
 
 #sidemenu ul {
 	list-style: none;
 }
-
 </style>
 </head>
 <body>
@@ -57,19 +57,22 @@ article {
 		<c:if test="${empty id}">
 			<a href="logonForm.lo"><button id="loginbutton">판도라 박스
 					로그인</button></a>
+			<div align="right">
+				<a href="joinForm.lo">무료회원가입</a>
+			</div>
 		</c:if>
 		<c:if test="${!empty id}">
 			<h2>${sessionScope['id']}님 반갑습니다</h2>
+			<a href="logout.lo"><button id="loginbutton">로그아웃</button></a>
+			<div align="right">
+				<a href="myPage.do">내 정보 관리</a><br>
+			</div>
+			<a href="chargeForm.do">캐시충전</a> <br> 
 		</c:if>
-		<div align="right">
-			<a href="joinForm.lo">무료회원가입</a>
-		</div>
 		<br>
-		<a href="chargeForm.do">캐시충전</a> <br>
-		<a href="reqBoardList.do">자료요청	게시판</a> <br>
-		고객상담 <br>
-		<a href="vipApplyForm.do">판매자 신청</a> <br>
-		<a href="chargeForm.do">사은 행사(배너 넣을 것)</a> <br>
+		<a href="reqBoardList.do">자료요청 게시판</a> <br> 고객상담 <br> 
+		<a href="vipApplyForm.do"> 판매자 신청</a> <br> 
+		<a href="chargeForm.do">사은행사(배너 넣을 것)</a> <br>
 		<a href="fileUploadForm.up">파일 업로드(이건 판매자로 로그인 했을시만)</a> <br>
 	</div>
 	<article>

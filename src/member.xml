@@ -19,14 +19,16 @@
 	<select id="select" parameterType="string" resultType="member">
 		select * from member where mem_id=#{mem_id}
 	</select>
-	<!-- <update id="update" parameterType="member">
-		update member2 set password=#{password}, name=#{name},
-		address=#{address}, tel=#{tel}, update_date=sysdate where id=#{id}
+	<update id="update" parameterType="member">
+		update member set mem_passwd=#{mem_passwd}, mem_email=#{mem_email}, mem_tel=#{mem_tel}, mem_addr=#{mem_addr}, mem_birth=#{mem_birth}, mem_update_date=sysdate where mem_id=#{mem_id}
 	</update>
 	<update id="delete" parameterType="string">
-		update member2 set del='y' where id=#{id}
-	</update> -->
+		update member set mem_del='y' where mem_id=#{mem_id}
+	</update>
 	<insert id="insert" parameterType="member">
 		insert into member values ( #{mem_id}, #{mem_passwd}, #{mem_name}, #{mem_email}, #{mem_tel}, #{mem_addr}, #{mem_birth}, sysdate, sysdate, 2, 'n', 'n', 'n')
 	</insert>
+	<update id="charge" parameterType="member">
+		update member set mem_point=(select mem_point from member where mem_id=#{mem_id})+#{mem_point} where mem_id=#{mem_id}
+	</update>
 </mapper>

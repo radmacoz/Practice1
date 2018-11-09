@@ -5,10 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- <script type="text/javascript">
+	function down(file) {
+		window.open("fileSelect.up?file_upload="+file,"", "width=200 height=300");
+	}
+</script> -->
 </head>
 <body>
-
-	<form action="fileDown.up">
+	<%-- <form action="fileDown.up" name="frm" onsubmit="down('${fileup.file_upload }')"> --%>
+	<form action="fileDown.up" name="frm">
 		<input type="hidden" name="mem_id" value="${sessionScope['id']}">
 		<input type="hidden" name="file_num" value="${fileup.file_num }">
 		<table border="1">
@@ -29,8 +34,9 @@
 				<td colspan="5">${fileup.file_upload }</td>
 			</tr>
 			<tr>
-				<td colspan="6" align="center"><input type="submit"
-					value="내려받기"></td>
+				<td colspan="6" align="center"><input type="submit" value="내려받기"></td>
+<!-- 				<td colspan="6" align="center"><a	href="fileTest/A02.png">
+				<input type="submit" value="내려받기"></a></td> -->
 			</tr>
 			<tr>
 				<th colspan="6"><img height="400" alt="파일 없음"
@@ -40,8 +46,7 @@
 				<th colspan="6"><pre>${fileup.file_desc }</pre></th>
 			</tr>
 			<tr>
-				<td colspan="6" align="center"><input type="submit"
-					value="내려받기"></td>
+				<td colspan="6" align="center"><input type="submit" value="내려받기"></td>
 			</tr>
 		</table>
 	</form>

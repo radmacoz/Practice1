@@ -113,26 +113,20 @@ form .text {
 	width: 150px;
 }
 
-#delbutton {
-	height: 30px;
-	width: 70px;
-	background-color: #FAE0D4;
-	float: none;
-}
+
 </style>
 </head>
 <body id="reg">
 	<div id="body">
-
-		<form id="reg1" method="post" action="">
+				<h2>　</h2>
+					<h2>　</h2>
+					<h2>회원 정보</h2>
 			<c:set var="id" value="${sessionScope['id']}"></c:set>
 			<c:if test="${empty id}">
 				<table cellpadding="5" cellspacing="0" border="1">
 
-
-					<h2>회원 정보</h2>
 					<tr>
-						<th><label for="f-user"> 로그인이 필요합니다 </label></th>
+						<th><label for="f-user"> 로그인이<br>필요합니다 </label></th>
 						<td class="desc"><a href="logonForm.lo">
 						<button>판도라 박스 로그인</button></a></td>
 					</tr>
@@ -140,7 +134,7 @@ form .text {
 			</c:if>
 			<c:if test="${!empty id}">
 
-				<h2>회원 정보</h2>
+			<!-- 	<h2>회원 정보</h2> -->
 				<table cellpadding="5" cellspacing="0" border="1">
 
 					<tr>
@@ -164,15 +158,20 @@ form .text {
 					</tr>
 
 					<tr>
-						<th><label for="f-email"> 판매자 신청여부 </label></th>
+						<th><label for="f-email"> 판매자<br>신청여부 </label></th>
 						<td class="desc"><c:if test="${member.mem_vip=='y'}">신청완료</c:if>
 							<c:if test="${member.mem_vip=='n'}">미신청</c:if></td>
 					</tr>
 				
 				</table>
-				<a href="delete.do" ><button id="delbutton">회원탈퇴</button></a>
+				<form action="updateForm.do">
+					<input type="submit" value="회원정보수정">
+				</form>
+				<form action="delete.do">
+					<input type="submit" value="회원탈퇴">
+				</form>
 			</c:if>
-		</form>
+		</div>
 
 		<%-- 
 </head>

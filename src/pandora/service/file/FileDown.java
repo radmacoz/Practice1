@@ -19,8 +19,9 @@ public class FileDown implements CommandProcess {
 		DownloadDao dd = DownloadDao.getInstance();
 		download.setFile_num(file_num);
 		download.setMem_id(mem_id);
-		dd.insert(download);
+		int result = dd.insert(download);
 		
+		request.setAttribute("result", result);
 		return "fileDown";
 	}
 

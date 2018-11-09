@@ -8,16 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:if test="${result>0 }">
+<c:if test="${result>0}">
 	<script type="text/javascript">
-		alert("다운로드 성공");
+		alert("탈퇴하였습니다");
 		location.href="main.do";
 	</script>
 </c:if>
 
-<c:if test="${result == 0 }">
+<c:if test="${result==0}">
 	<script type="text/javascript">
-		alert("다운로드 실패");
+		alert("탈퇴실패");
 		history.go(-1);
 	</script>
 </c:if>

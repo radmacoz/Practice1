@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="sessionChk.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +22,7 @@ body, form {
 /* Page Structure
 ----------------------------------------------- */
 #body {
-	width: 400px;
+	width: 710px;
 	padding: 10px 0 15px;
 	margin: 0 auto;
 	text-align: left;
@@ -83,7 +85,7 @@ label:hover {
 }
 
 #reg table {
-	width: 380px;
+	width: 410px;
 	margin-left: 60px;
 }
 
@@ -113,30 +115,34 @@ form .text {
 
 
 </style>
+<script type="text/javascript">
+	function chk() {
+		if(frm.password.value != frm.password2.value) {
+			alert("암호와 암호확인이 다릅니다");
+			frm.password.focus();
+			return false;
+		}
+	}
+</script>
 </head>
-<body>
-<div id="body">
-<form action="logon.lo">
-	<input type="checkbox">아이디기억
-		<table border="1">
-			<tr>
-				<th>아이디</th>
-				<td><input type="text" name="id" required="required"
-					autofocus="autofocus" placeholder="아이디"></td>
-			</tr>
-			<tr>
-				<th>비밀번호</th>
-				<td><input type="password" name="password" required="required"
-					placeholder="비밀번호"></td>
-			</tr>
-			<tr align="center">
-				<td colspan="2"><input type="submit" value="로그인"></td>
-			</tr>
-		</table>
-		<a href="joinForm.lo">회원가입</a>
-		<a href="main.do">돌아가기</a>
-		<!-- 체크하는 자바스크립트 함수 필요 -->
+<body id="reg">
+	<div id="body">
+<form action="update.do" method="post" name="frm" onsubmit="return chk()">
+	<input type="hidden" name="id" value="${member.mem_id}">
+<table border="1">
+	<tr><th>아이디</th><td>${member.mem_id}</td></tr>
+	<tr><th>암호</th><td><input type="password" name="password" required="required" autofocus="autofocus"></td></tr>
+	<tr><th>암호확인</th><td><input type="password" name="password2" required="required"></td></tr>
+	<tr><th>이름</th><td>${member.mem_name}</td></tr>
+	<tr><th>이메일</th><td><input type="email" name="email" value="${member.mem_email}" required="required"></td></tr>
+	<tr><th>전화</th><td><input type="tel" name="tel" value="${member.mem_tel}" required="required" 
+		pattern="\d{3}-\d{3,4}-\d{4}" placeholder="xxx-xxxx-xxxx"></td></tr>
+	<tr><th>주소</th><td><input type="text" name="address" required="required" value="${member.mem_addr}"></td></tr>
+	<tr><th>생년월일</th><td><input type="text" name="birth" value="${member.mem_birth}" required="required"></td></tr>
+	<tr><th colspan="2"><input type="submit" value="수정"></th></tr>
+</table>
 </form>
+<a href="main.do">돌아가기</a>
 </div>
 </body>
 </html>

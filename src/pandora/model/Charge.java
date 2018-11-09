@@ -7,8 +7,9 @@ public class Charge {
 	private int charge_num;
 	private String mem_id;
 	private Date charge_date;
-	private int charge_option_num;
+	private int charge_point;
 	private String charge_account;
+	
 	public int getCharge_num() {
 		return charge_num;
 	}
@@ -27,11 +28,11 @@ public class Charge {
 	public void setCharge_date(Date charge_date) {
 		this.charge_date = charge_date;
 	}
-	public int getCharge_option_num() {
-		return charge_option_num;
+	public int getCharge_point() {
+		return charge_point;
 	}
-	public void setCharge_option_num(int charge_option_num) {
-		this.charge_option_num = charge_option_num;
+	public void setCharge_point(int charge_point) {
+		this.charge_point = charge_point;
 	}
 	public String getCharge_account() {
 		return charge_account;
@@ -39,5 +40,6 @@ public class Charge {
 	public void setCharge_account(String charge_account) {
 		this.charge_account = charge_account;
 	}
+	
 
 }
