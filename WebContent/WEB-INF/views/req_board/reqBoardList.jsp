@@ -8,13 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 	위에는 main과 같게
 	<p />
-
 	좌측 사이드 메뉴 동일
 	<br>
-
 	<table>
 		<tr>
 			<th>번호</th>
@@ -22,24 +19,25 @@
 			<th width="300px">제목</th>
 			<th>작성자</th>
 			<th>날짜</th>
+			<th>조회수</th>
 		</tr>
-		<c:forEach var="i" begin="1" end="20">
-			<tr>
-				<td>${i }</td>
-				<td>분류${i }</td>
-				<td><a href="requestView.do?subject=${subject }">제목${i }</td>
-				<td>작성자${i }</td>
-				<td>날짜${i }</td>
-			</tr>
+		<c:forEach var="req_board" items="${list }">
+			<c:if test="${req_board.board_del=='n' }">
+				<tr>
+					<td>${req_board.board_num }</td>
+					<td>${req_board.category }</td>
+					<td><a href="requestView.do?board_num=${req_board.board_num }">${req_board.board_subject }</td>
+					<td>${req_board.mem_id }</td>
+					<td>${req_board.board_re_date }</td>
+					<td align="center">${req_board.board_readcount}</td>
+				</tr>
+			</c:if>
+			<c:if test="${req_board.board_del=='y' }">
+				<td>삭제된 글입니다</td>
+			</c:if>
 		</c:forEach>
-		
 		<a href="requestForm.do"><button>자료 요청하기</button></a>
-		<a href="reqBoardList.do?writer=${writer }"><button>내가 신청한 자료</button></a>
-		
+		<a href="reqBoardList.do?writer=${req_board.mem_id }"><button>내가 신청한 자료</button></a>
 	</table>
-	
-	
-	
-	
 </body>
 </html>

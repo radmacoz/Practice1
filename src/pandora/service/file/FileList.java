@@ -14,8 +14,14 @@ public class FileList implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
 		FileUpDao fd = FileUpDao.getInstance();
-		List<FileUp> list = fd.list();
-		request.setAttribute("list", list);
+		String category = request.getParameter("category");
+		if (category == null || category == "")	{
+			List<FileUp> list = fd.list();
+			request.setAttribute("list", list);
+		}	else	{
+			List<FileUp> list2 = fd.list2(category);
+			request.setAttribute("list", list2);
+		}
 /*		System.out.println("갯수 : "+list.size());  에러 검출을 위한 출력 메시지*/
 		return "fileList";
 	}

@@ -134,7 +134,7 @@ form .text {
 			</tr>
 		</table>
 		<a href="joinForm.lo">회원가입</a>
-		<a href="main.do">돌아가기</a>
+		<a href="main.do">메인으로</a>
 		<!-- 체크하는 자바스크립트 함수 필요 -->
 </form>
 </div>

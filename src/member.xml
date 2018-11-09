@@ -31,4 +31,10 @@
 	<update id="charge" parameterType="member">
 		update member set mem_point=(select mem_point from member where mem_id=#{mem_id})+#{mem_point} where mem_id=#{mem_id}
 	</update>
+	<update id="down" parameterType="member">
+		update member set mem_point=(select mem_point from member where mem_id=#{mem_id})-#{mem_point} where mem_id=#{mem_id}
+	</update>
+	<update id="upload" parameterType="member">
+		update member set mem_point=(select mem_point from member where mem_id=#{mem_id})+#{mem_point} where mem_id=#{mem_id}
+	</update>
 </mapper>

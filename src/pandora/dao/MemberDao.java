@@ -43,4 +43,10 @@ public class MemberDao {
 	public int charge(Member member) {
 		return session.update("memberns.charge", member);
 	}
+	public int down(Member member) {
+		return session.update("memberns.down", member);
+	}
+	public int upload(Member member) {
+		return session.update("memberns.upload", member);
+	}
 }

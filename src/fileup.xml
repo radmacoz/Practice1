@@ -18,7 +18,15 @@
 	<select id="list" resultMap="fileupResult">
 		select * from fileup
 	</select>
-	
+	<select id="list2" parameterType="String" resultMap="fileupResult">
+		select * from fileup where category=#{category}
+	</select>
+	<select id="list3" parameterType="hashMap" resultMap="fileupResult">
+		select * from fileup where ${subject} like '%'||#{keyword }||'%'
+	</select>
+	<select id="list4" parameterType="hashMap" resultMap="fileupResult">
+		select * from fileup where category=#{category} and ${subject} like '%'||#{keyword }||'%'
+	</select>
 	<select id="select" parameterType="int" resultType="fileup">
 		select * from fileup where file_num=#{file_num}
 	</select>

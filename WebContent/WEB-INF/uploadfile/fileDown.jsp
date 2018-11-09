@@ -11,7 +11,7 @@
 <c:if test="${result>0 }">
 	<script type="text/javascript">
 		alert("다운로드 성공");
-		location.href="main.do";
+		window.close();
 	</script>
 </c:if>
 
