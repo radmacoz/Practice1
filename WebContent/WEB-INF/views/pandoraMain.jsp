@@ -13,7 +13,7 @@ body {
 
 #sidemenu {
 	width: 250px;
-	height: 300px;
+	height: 400px;
 	float: left;
 	margin-left: 20px;
 	margin-top: 30px;
@@ -73,7 +73,9 @@ article {
 		<a href="reqBoardList.do">자료요청 게시판</a> <br> 고객상담 <br> 
 		<a href="vipApplyForm.do"> 판매자 신청</a> <br> 
 		<a href="chargeForm.do">사은행사(배너 넣을 것)</a> <br>
-		<a href="fileUploadForm.up">파일 업로드(이건 판매자로 로그인 했을시만)</a> <br>
+	<c:if test="${member.mem_vip == 'y' }">
+		<a href="fileUploadForm.up">파일 업로드</a> <br>
+	</c:if>
 	</div>
 	<article>
 		<%-- <jsp:include page="../uploadfile/"+"${pgm }"/> --%>

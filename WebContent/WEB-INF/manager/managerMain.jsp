@@ -6,17 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css"> 
-table { 
-padding: 5 ; 
-width: 300px;
-border: 1px
+<style type="text/css">
+table {
+	padding: 5;
+	width: 300px;
+	border: 1px
 }
+
 table th {
 	color: gray;
 	text-align: center;
 }
-
 </style>
 </head><body>      
    <b>관리 작업중입니다. </b><input type="button" value="로그아웃" 
@@ -24,7 +24,7 @@ table th {
    <table>
      <tr><th>회원 관리</th></tr>
      <tr><td><a href="memberList.ma">회원 목록 보기</a></td></tr>
-     <tr><td><a href="memberList.ma?vip_request='y'">판매자 신청 회원</a></td></tr>
+     <tr><td><a href="memberVipList.ma">판매자 신청 회원</a></td></tr>
      <!-- <tr><td>신고 접수 회원</a></td></tr> -->
    </table><br><br>
    <table>

@@ -12,11 +12,7 @@
 <c:set var="id" value="${sessionScope['id']}"></c:set>
 <article>
 <form action="charge.do" method="post">
-<h2>　</h2>
-<h2>　</h2>
-<h2>　</h2>
-<h2>포인트 충전</h2>
-<table>
+<table><caption>포인트 충전</caption>
 <tr><th>선택 버튼</th><th>충전 금액</th><th>충전 포인트</th>
 <tr><td><input type="radio" name="charge" value="4000" checked="checked">옵션1</td><td>5,000원</td><td>4,000 point</td></tr>
 <tr><td><input type="radio" name="charge" value="10000">옵션2</td><td>10,000원</td><td>10,000 point</td></tr>

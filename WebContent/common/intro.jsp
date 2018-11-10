@@ -6,6 +6,12 @@
 <meta charset="UTF-8">
 <title>판도라 박스에 오신 것을 환영합니다</title>
 <style type="text/css">
+#tframe		{
+	width: 950px;
+	height: 200px;
+	border: none;
+	clear: both;
+}
 #top {
 	text-align: right;
 	font-size: 12px;
@@ -51,6 +57,7 @@
 </style>
 </head>
 <body>
+<article id="tframe">
 	<div id="top">
 		또다른 세상의 시작. 판도라의 상자가 열리다.&nbsp;&nbsp;&nbsp;&nbsp; <a
 			href="chargeForm.do">캐시 충전</a> || <a href="myPage.do">내정보 관리</a>
@@ -94,5 +101,6 @@
 			<li><a href="fileList.up?category=유틸">유틸</a></li>
 		</ul>
 	</div>
+</article>
 </body>
 </html>

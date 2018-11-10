@@ -17,26 +17,27 @@ public class Req_BoardDao {
 		return instance;
 	}
 	private static SqlSession session;
-	static	{
-		System.out.println("허거");
-		try {
-			Reader reader = Resources.getResourceAsReader("configuration.xml");
-			SqlSessionFactory ssf = new SqlSessionFactoryBuilder().build(reader);
+	static {
+		try{Reader reader = 
+			 Resources.getResourceAsReader("configuration.xml");
+			SqlSessionFactory ssf = 
+				new SqlSessionFactoryBuilder().build(reader);
 			session = ssf.openSession(true);
 			reader.close();
-		} catch (Exception e) {
-			System.out.println("session 생성 : "+e.getMessage());
+		}catch(Exception e) {
+			System.out.println("session생성 : "+e.getMessage());
 		}
 	}
 	public List<Req_Board> list() {
 		return session.selectList("req_boardns.list");
 	}	
 	public int insert(Req_Board req_board) {
-		int result = 0;		
-			result = session.insert("req_boardns.insert", req_board);
-		return result;
+		return session.insert("req_boardns.insert", req_board);
 	}
 	public Req_Board select(int board_num) {
+		return (Req_Board)session.selectOne("req_boardns.getBoard", board_num);
+	}
+	/*public Req_Board select(int board_num) {
 		Req_Board req_board = null;
 		try {
 			req_board = (Req_Board)session.selectOne("req_boardns.getBoard", board_num);			
@@ -44,7 +45,7 @@ public class Req_BoardDao {
 			System.out.println(e.getMessage());
 		}
 		return req_board;
-	}
+	}*/
 	public void readcountUpdate(int board_num) {
 		Req_Board req_board = null;
 		try {
@@ -60,9 +61,7 @@ public class Req_BoardDao {
 		return session.update("req_boardns.update", req_board);
 	}
 	public int delete(int board_num) {
-		int result = 0;
-			result = session.update("req_boardns.delete",board_num);
-		return result;
+		return session.update("req_boardns.delete",board_num);
 	}
 
 }

@@ -37,4 +37,19 @@
 	<update id="upload" parameterType="member">
 		update member set mem_point=(select mem_point from member where mem_id=#{mem_id})+#{mem_point} where mem_id=#{mem_id}
 	</update>
+	<select id="list" resultMap="memberResult">
+		select * from member
+	</select>
+	<select id="list2" resultMap="memberResult">
+		select * from member where mem_vip_app='y' and mem_vip='n'
+	</select>
+	<update id="vipapply" parameterType="member">
+		update member set mem_vip_app='y' where mem_id=#{mem_id}
+	</update>
+	<update id="vipaccept" parameterType="member">
+		update member set mem_vip_app='n', mem_vip='y' where mem_id=#{mem_id}
+	</update>
+	<update id="vipreject" parameterType="member">
+		update member set mem_vip_app='n', mem_vip='n' where mem_id=#{mem_id}
+	</update>
 </mapper>

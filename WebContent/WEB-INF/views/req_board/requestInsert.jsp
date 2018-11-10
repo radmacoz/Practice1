@@ -10,15 +10,14 @@
 <body>
 <c:if test="${result > 0 }">
 	<script type="text/javascript">
-		alert("판매자 신청이 정상적으로 처리 되었습니다.");
-		location.href="main.do";
+	alert("게시글이 입력되었습니다");
+	location.href="reqBoardList.do";
 	</script>
 </c:if>
-
 <c:if test="${result == 0 }">
 	<script type="text/javascript">
-		alert("제대로 처리되지 않았습니다. 다시 시도해 주세요");
-		history.go(-1);
+	alert("에러 발생. 다시 시도해주세요.");
+	history.go(-1);
 	</script>
 </c:if>
 </body>

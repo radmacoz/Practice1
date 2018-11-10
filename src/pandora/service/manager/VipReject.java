@@ -9,16 +9,19 @@ import pandora.dao.MemberDao;
 import pandora.model.Member;
 import pandora.service.CommandProcess;
 
-public class MemberList implements CommandProcess {
+public class VipReject implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
 		
+		String id = request.getParameter("mem_id");
 		MemberDao md = MemberDao.getInstance();
-		List<Member> list = md.list(); 
-		request.setAttribute("list", list);
+		Member member = md.select(id);
+		int result = md.vipReject(member);
 		
-		return "super/memberList";
+		List<Member> list = md.list2(); 
+		request.setAttribute("list", list);
+		return "super/memberVipList";
 	}
 
 }

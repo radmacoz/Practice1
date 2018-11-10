@@ -8,8 +8,8 @@
 	 	<typeAlias alias="fileup" type="pandora.model.FileUp"/>
 		<typeAlias alias="download" type="pandora.model.Download"/>
 		<typeAlias alias="charge" type="pandora.model.Charge"/>
-	<!--	<typeAlias alias="charge_op" type="pandora.model.Charge_option"/>
-		<typeAlias alias="req_board" type="pandora.model.Req_Board"/> -->
+		<typeAlias alias="req_board" type="pandora.model.Req_Board"/>
+	<!--	<typeAlias alias="charge_op" type="pandora.model.Charge_option"/>  -->
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -27,7 +27,7 @@
 		<mapper resource="fileup.xml" />
 		<mapper resource="download.xml" />
 		<mapper resource="charge.xml" />
-	<!-- 		<mapper resource="charge_op.xml" />
-		<mapper resource="req_board.xml" /> -->
+		<mapper resource="req_board.xml" /> 
+	<!-- 		<mapper resource="charge_op.xml" /> -->
 	</mappers>
 </configuration>

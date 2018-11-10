@@ -6,12 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	article	{
+		width: 650px;
+		float: right;
+	}
+</style>
 </head>
 <body>
-	위에는 main과 같게
-	<p />
-	좌측 사이드 메뉴 동일
-	<br>
+	<article>
+	<h2>좌측에 사이드 메뉴 넣을 것</h2>
 	<table>
 		<tr>
 			<th>번호</th>
@@ -36,8 +40,10 @@
 				<td>삭제된 글입니다</td>
 			</c:if>
 		</c:forEach>
+	</table>
 		<a href="requestForm.do"><button>자료 요청하기</button></a>
 		<a href="reqBoardList.do?writer=${req_board.mem_id }"><button>내가 신청한 자료</button></a>
-	</table>
+		<a href="main.do"><button>메인으로</button></a>
+	</article>
 </body>
 </html>

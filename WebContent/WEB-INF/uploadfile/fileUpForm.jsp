@@ -26,7 +26,7 @@
 <body>
 	<form action="fileUpload.up" method="post" name="frm"
 		onsubmit="return chk()" enctype="multipart/form-data">
-		<input type="hidden" name="mem_id" value="a1a">
+		<input type="hidden" name="mem_id" value="${sessionScope['id']}">
 		<!-- id를 표현식으로 수정할 것 -->
 		<table border="1">
 			<caption>판도라 박스 업로드</caption>

@@ -6,16 +6,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	#dframe	{
+		width: 500px;
+		float: right;
+	}
+</style>
 </head>
 <body>
 	<c:set var="id" value="${sessionScope['id']}"></c:set>
-	<h2>  </h2>
-	<h2>  </h2>
-	<h2>  </h2>
+	<div id="dframe">
 	<c:if test="${result1+result2== 2 }">
 		<table>
 			<tr>
-				<th>${sessionScope['id']}님충전 감사합니다.</th>
+				<th>${sessionScope['id']}님 충전 감사합니다.</th>
 			</tr>
 			<tr>
 				<th>즐거운 판도라 이용 되시길 바랍니다.</th>
@@ -35,6 +39,7 @@
 			history.go(-1);
 		</script>
 	</c:if>
+	</div>
 
 </body>
 </html>

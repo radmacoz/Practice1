@@ -3,6 +3,9 @@ package pandora.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pandora.dao.MemberDao;
+import pandora.model.Member;
+
 public class MainAction implements CommandProcess {
 
 	@Override
@@ -15,6 +18,13 @@ public class MainAction implements CommandProcess {
 		*/
 		String category = request.getParameter("category");
 		request.setAttribute("category", category);
+		
+		if((String)request.getSession().getAttribute("id")!=null) {
+			String id = (String)request.getSession().getAttribute("id");
+			MemberDao md = MemberDao.getInstance();
+			Member member = md.select(id);
+			request.setAttribute("member", member);}
+		
 		return "pandoraMain";
 	}
 

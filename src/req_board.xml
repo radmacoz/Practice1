@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="req_boardns">
+	<resultMap type="req_board" id="req_boardResult">
+	<result property="mem_id"		 	column="mem_id" />
+	<result property="board_num"		column="board_num" />
+	<result property="board_content"	column="board_content" />
+	<result property="category"		 	column="category" />
+	<result property="board_subject" 	column="board_subject" />
+	<result property="board_readcount" 	column="board_readcount" />
+	<result property="board_ref" 		column="board_ref" />
+	<result property="board_re_step" 	column="board_re_step" />
+	<result property="board_re_level" 	column="board_re_level" />
+	<result property="board_re_date"	column="board_re_date" />
+	<result property="board_del" 		column="board_del" />
+	</resultMap>
+<!-- 	 board_num number(10) not null primary key,
+  mem_id varchar2(20) not null,
+  board_subject varchar2(50) not null,
+  board_password varchar2(20) not null,
+  board_content varchar2(20) not null,
+  board_readcount number(10) not null,
+  board_ref number(10) null,
+  board_re_step number(10) not null,
+  board_re_level number(10) not null,
+  board_re_date number(10) not null,
+  board_del varchar2(5) not null,
+  category varchar2(20) not null); -->
+
+	<select id="list" resultMap="req_boardResult">
+		<!-- select * from req_board order by board_num desc -->
+		select * from req_board order by board_ref desc, board_re_step
+	</select>
+	<insert id="insert" parameterType="req_board">
+		<selectKey keyProperty="board_num" order="BEFORE"
+			resultType="int">
+			select nvl(max(board_num), 0) + 1 from req_board
+		</selectKey>
+		insert into req_board values (
+		#{board_num},#{mem_id},#{board_subject},
+		#{board_content},0,#{board_num},0,0,sysdate,'n',#{category})
+	</insert>
+	<select id="getBoard" parameterType="int" resultType="req_board">
+		select *
+		from req_board where board_num=#{board_num}
+	</select>
+	<update id="readcount" parameterType="int">
+		update req_board set
+		board_readcount=board_readcount+1 where board_num=#{board_num}
+	</update>
+	<update id="update">
+		update req_board set board_subject=#{board_subject},
+		board_content=#{board_content}, category=#{category} where
+		board_num=#{board_num}
+	</update>
+	<update id="delete">
+		update req_board set board_del='y' where
+		board_num=#{board_num}
+	</update>
+<!--   	
+	<select id="list" parameterType="board" resultMap="resultMap">
+		select * from (select rowNum rn, a.* 
+		  		  from (select * from promotion order by bno desc,
+		  		   ref desc , re_step) a) 
+				 where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="total" resultType="int">
+		select count(*) from promotion
+	</select>
+	
+	<select id="sqlNum" resultType="int">
+		select nvl(max(num),0)+1 from promotion
+	</select>
+	<select id="getBoard" parameterType="int" resultType="board">
+		select * from promotion where bno=#{bno}
+	</select>
+	
+	<update id="sqlUp" parameterType="board">
+		update promotion set re_step=re_step+1 
+		 where ref=#{ref} and re_step>#{re_step}
+	</update>
+	
+	<insert id="insert" parameterType="board">
+		insert into promotion values(#{num},#{cid},#{passwd},#{subject},#{content},0,
+									 #{ref},#{re_step},#{re_level},sysdate,'n')
+	</insert>
+	
+	<update id="readcount" parameterType="int" >
+		update promotion set readcount=readcount+1 where bno=#{bno}
+	</update>
+	
+	<update id="delete">
+		update promotion set del='y' where num=#{num}
+	</update>	
+	
+	<update id="update">
+		update promotion set cid=#{cid},subject=#{subject},content=#{content} where bno=#{bno}
+	</update>	 -->
+  	
+</mapper>
