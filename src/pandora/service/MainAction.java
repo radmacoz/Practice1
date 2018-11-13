@@ -19,11 +19,19 @@ public class MainAction implements CommandProcess {
 		String category = request.getParameter("category");
 		request.setAttribute("category", category);
 		
+	/*	String cate = request.getParameter("cate");
+		String subject = request.getParameter("subject");
+		String keyword = request.getParameter("keyword");
+		request.setAttribute("cate", cate);
+		request.setAttribute("subject", subject);
+		request.setAttribute("keyword", keyword);*/
+		
 		if((String)request.getSession().getAttribute("id")!=null) {
 			String id = (String)request.getSession().getAttribute("id");
 			MemberDao md = MemberDao.getInstance();
 			Member member = md.select(id);
-			request.setAttribute("member", member);}
+			request.setAttribute("member", member);
+		}
 		
 		return "pandoraMain";
 	}

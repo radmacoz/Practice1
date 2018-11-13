@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="sessionChk.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -118,122 +117,72 @@ form .text {
 </head>
 <body id="reg">
 	<div id="body">
-				<h2>　</h2>
-					<h2>　</h2>
-					<h2>회원 정보</h2>
-			<c:set var="id" value="${sessionScope['id']}"></c:set>
-			<c:if test="${empty id}">
-				<table cellpadding="5" cellspacing="0" border="1">
+		<h2>회원 정보</h2>
+		<c:set var="id" value="${sessionScope['id']}"></c:set>
+		<c:if test="${empty id}">
+			<table cellpadding="5" cellspacing="0" border="1">
 
-					<tr>
-						<th><label for="f-user"> 로그인이<br>필요합니다 </label></th>
-						<td class="desc"><a href="logonForm.lo">
-						<button>판도라 박스 로그인</button></a></td>
-					</tr>
-				</table>
-			</c:if>
-			<c:if test="${!empty id}">
+				<tr>
+					<th><label for="f-user"> 로그인이<br>필요합니다
+					</label></th>
+					<td class="desc"><a href="logonForm.lo">
+							<button>판도라 박스 로그인</button>
+					</a></td>
+				</tr>
+			</table>
+		</c:if>
+		<c:if test="${!empty id}">
 
 			<!-- 	<h2>회원 정보</h2> -->
-				<table cellpadding="5" cellspacing="0" border="1">
+			<table cellpadding="5" cellspacing="0" border="1">
 
-					<tr>
-						<th><label for="f-user"> 아이디 </label></th>
-						<td class="desc">${sessionScope['id']}</td>
-					</tr>
+				<tr>
+					<th><label for="f-user"> 아이디 </label></th>
+					<td class="desc">${sessionScope['id']}</td>
+				</tr>
 
-					<tr>
-						<th><label for="f-pass1"> 포인트 </label></th>
-						<td class="desc">${member.mem_point}</td>
-					</tr>
+				<tr>
+					<th><label for="f-pass1"> 포인트 </label></th>
+					<td class="desc">${member.mem_point}</td>
+				</tr>
 
-					<tr>
-						<th><label for="f-pass2"> 이메일 </label></th>
-						<td class="desc">${member.mem_email}</td>
-					</tr>
+				<tr>
+					<th><label for="f-pass2"> 이메일 </label></th>
+					<td class="desc">${member.mem_email}</td>
+				</tr>
 
-					<tr>
-						<th><label for="f-dispname"> 가입일 </label></th>
-						<td class="desc">${member.mem_reg_date}</td>
-					</tr>
+				<tr>
+					<th><label for="f-dispname"> 가입일 </label></th>
+					<td class="desc">${member.mem_reg_date}</td>
+				</tr>
 
-					<tr>
-						<th><label for="f-email"> 판매자<br>신청여부 </label></th>
-						<td class="desc"><c:if test="${member.mem_vip=='y'}">신청완료</c:if>
-							<c:if test="${member.mem_vip=='n'}">미신청</c:if></td>
-					</tr>
-				
-				</table>
-				<form action="updateForm.do">
-					<input type="submit" value="회원정보수정">
-				</form>
-				<form action="delete.do">
-					<input type="submit" value="회원탈퇴">
-				</form>
-			</c:if>
-		</div>
-
-		<%-- 
-</head>
-<body>
-
-	<table>
-		<caption>회원님의 정보를 알려드립니다</caption>
-		<tr>
-			<th>회원 아이디</th>
-			<td>표현식(아이디)</td>
-			<th>가입일</th>
-			<td>표현식(아이디)</td>
-		</tr>
-		<tr>
-			<th>보유 포인트</th>
-			<td>표현식(포인트)</td>
-			<th>최근 수정일</th>
-			<td>표현식(최근수정일)</td>
-		</tr>
-		<tr>
-			<td colspan="4"><a href=""><input type="button"
-					value="정보 수정"></a></td>
-		</tr>
-	</table> --%>
-		<%-- 	<table>
-		<caption>내가 받은 자료</caption>
-		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th>용량</th>
-			<th>분류</th>
-			<th>포인트</th>
-			<th>판매자</th>
-			<th>다시받기</th>
-		</tr>
-		<c:forEach var="i" begin="1" end="10">
-			<tr>
-				<td>번호${i }</td>
-				<td>제목${i }</td>
-				<td>용량${i }</td>
-				<td>분류${i }</td>
-				<td>포인트${i }</td>
-				<td>판매자${i }</td>
-				<td><a href="fileSelect.up?file_num=${board.num}"><input
-						type="button" value="다운로드"></a></td>
-			</tr>
-		</c:forEach>
-	</table>
-	<table>
-		<caption>내 결제 내역</caption>
-		<tr>
-			<th>결제일</th>
-			<th>포인트</th>
-			<th>결제 금액</th>
-		</tr>
-		<c:forEach var="i" begin="1" end="5">
-			<tr>
-				<td>결제일${i }</td>
-				<td>포인트${i }</td>
-				<td>결제 금액${i }</td>
-			</tr>
-		</c:forEach>
-	</table> --%>
+				<tr>
+					<th><label for="f-email"> 판매자<br>신청여부
+					</label></th>
+					<td class="desc"><c:if test="${member.mem_vip=='y'}">신청완료</c:if>
+						<c:if test="${member.mem_vip=='n'}">미신청</c:if></td>
+				<tr>
+					<th>충전내역</th>
+					<td class="desc"><form action="myChargeList.do">
+							<input type="submit" value="충전내역">
+						</form></td>
+				</tr>
+				<tr>
+					<th>회원정보수정</th>
+					<td class="desc"><form action="updateForm.do">
+							<input type="submit" value="회원정보수정">
+						</form></td>
+				</tr>
+				<tr>
+					<th>회원탈퇴</th>
+					<td class="desc">
+						<form action="delete.do">
+							<input type="submit" value="회원탈퇴">
+						</form>
+					</td>
+				</tr>
+			</table>
+		</c:if>
+	</div>
 </body>
 </html>

@@ -7,15 +7,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	#dframe	{
-		width: 500px;
-		float: right;
-	}
+
+body { text-align: center; }
+table { margin-top: 50px;
+	margin-bottom: 180px;
+	margin-left: auto; 
+	margin-right: auto; }
+
 </style>
 </head>
 <body>
 	<c:set var="id" value="${sessionScope['id']}"></c:set>
-	<div id="dframe">
+	<div>
 	<c:if test="${result1+result2== 2 }">
 		<table>
 			<tr>
@@ -24,9 +27,12 @@
 			<tr>
 				<th>즐거운 판도라 이용 되시길 바랍니다.</th>
 			</tr>
-		</table>
-		<a href="main.do">메인으로</a>
+			<tr>
+			<th><br><a href="main.do">메인으로</a></th></tr>
+		</table><br><br>
+		
 	</c:if>
+	<br><br>
 	<c:if test="${result1==0 }">
 		<script type="text/javascript">
 			alert("결제 내역이 제대로 처리되지 않았습니다");

@@ -24,7 +24,7 @@ public class FileUpAction implements CommandProcess {
 		} catch (UnsupportedEncodingException e) {	}
 		
 		String realFolder = "";
-		int maxsize = 1024*1024*20;	// 20MB
+		int maxsize = 1024*1024*50;	// 50MB
 		String encType = "utf-8"; //엔코딩타입
 		MultipartRequest uploadReq = null;
 		String saveFolder = "/fileSave";//파일이 업로드되는 폴더를 지정한다.

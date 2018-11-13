@@ -31,7 +31,7 @@
 		<input type="hidden" name="file_num" value="${fileup.file_num }">
 		<table border="1">
 			<caption>파일 등록 정보</caption>
-			<tr>
+			<tr style="background-color: #BDBDBD;">
 				<th colspan="6">${fileup.file_name }</th>
 			</tr>
 			<tr>
@@ -47,8 +47,8 @@
 				<td colspan="5">${fileup.file_upload }</td>
 			</tr>
 			<tr>
-				<td colspan="6" align="center"><input type="submit"
-					value="내려받기"></td>
+				<td colspan="6" align="center">
+				<input style="background-color: #4374D9; color: white; border: none;" type="submit" value="내려받기"></td>
 				<!-- 				<td colspan="6" align="center"><a	href="fileTest/A02.png">
 				<input type="submit" value="내려받기"></a></td> -->
 			</tr>
@@ -60,8 +60,8 @@
 				<th colspan="6"><pre>${fileup.file_desc }</pre></th>
 			</tr>
 			<tr>
-				<td colspan="6" align="center"><input type="submit"
-					value="내려받기"></td>
+				<td colspan="6" align="center">
+				<input style="background-color: #4374D9; color: white; border: none;" type="submit" value="내려받기"></td>
 			</tr>
 		</table>
 		<p>

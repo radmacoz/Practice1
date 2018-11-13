@@ -44,7 +44,6 @@
 #category ul {
 	margin-left: 10px;
 	text-align: center;
-	font-size: 10px;
 	float: center;
 	list-style-type: none;
 }
@@ -52,12 +51,19 @@
 #category ul li {
 	display: inline;
 	margin: 20px;
-	font-size: 15px;
+	font-size: 16px;
+}
+#category ul li a:visited {
+	display: inline;
+	margin: 20px;
+	font-size: 16px;
+	background-color: #5882FA;
+	text-decoration: none;
 }
 </style>
 </head>
 <body>
-<article id="tframe">
+<div id="tframe">
 	<div id="top">
 		또다른 세상의 시작. 판도라의 상자가 열리다.&nbsp;&nbsp;&nbsp;&nbsp; <a
 			href="chargeForm.do">캐시 충전</a> || <a href="myPage.do">내정보 관리</a>
@@ -67,7 +73,8 @@
 			height="80"></a>
 	</div>
 	<div id="search">
-		<form action="fileSearch.up">
+<!-- 		<form action="fileSearch.up"> -->
+		<form action="" name="frm" method="post" onsubmit="fetchSearch()">
 			<select name="cate">
 				<optgroup label="카테고리">
 					<option value="">전체</option>
@@ -85,22 +92,34 @@
 					<option value="file_name">제목</option>
 				</optgroup>
 			</select><input type="text" name="keyword" size="35"
-				placeholder="검색한 후에 새로운 정렬을 이용해보세요"> <input type="submit"
+				placeholder="원하는 검색어를 입력하세요"> <input type="submit"
 				value="검색">
 		</form>
 	</div>
+	<script type="text/javascript">
+		function fetchSearch() {
+			location.href="main.do#!fileSearch.up?cate="+frm.cate.value+"&subject="+frm.subject.value+"&keyword="+frm.keyword.value;
+		}
+	</script>
 
 	<div id="category">
 		<ul>
-			<li><a href="fileList.up">전체</a></li>
+			<li><a href="main.do" onclick="fetchPage('fileList.up')">전체</a></li>
+			<li><a href="main.do#!fileList.up?category=도서" onclick="fetchPage('fileList.up?category=도서')">도서</a></li>
+			<li><a href="main.do#!fileList.up?category=이미지" onclick="fetchPage('fileList.up?category=이미지')">이미지</a></li>
+			<li><a href="main.do#!fileList.up?category=동영상" onclick="fetchPage('fileList.up?category=동영상')">동영상</a></li>
+			<li><a href="main.do#!fileList.up?category=음악" onclick="fetchPage('fileList.up?category=음악')">음악</a></li>
+			<li><a href="main.do#!fileList.up?category=교육" onclick="fetchPage('fileList.up?category=교육')">교육</a></li>
+			<li><a href="main.do#!fileList.up?category=유틸" onclick="fetchPage('fileList.up?category=유틸')">유틸</a></li>
+			<!-- <li><a href="fileList.up">전체</a></li>
 			<li><a href="fileList.up?category=도서">도서</a></li>
 			<li><a href="fileList.up?category=이미지">이미지</a></li>
 			<li><a href="fileList.up?category=동영상">동영상</a></li>
 			<li><a href="fileList.up?category=음악">음악</a></li>
 			<li><a href="fileList.up?category=교육">교육</a></li>
-			<li><a href="fileList.up?category=유틸">유틸</a></li>
+			<li><a href="fileList.up?category=유틸">유틸</a></li> -->
 		</ul>
 	</div>
-</article>
+</div>
 </body>
 </html>

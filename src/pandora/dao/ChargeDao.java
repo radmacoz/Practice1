@@ -1,5 +1,6 @@
 package pandora.dao;
 import java.io.Reader;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -39,7 +40,9 @@ public class ChargeDao {
 	public int insert(Charge charge) {
 		return session.insert("chargens.insert", charge);
 	}
-	
+	public List<Charge> myChargeList(String id) {
+		return session.selectList("chargens.myChargeList", id);
+	}
 /*	public int charge(Charge charge) {
 		return session.update("chargens.charge", charge);
 	}*/

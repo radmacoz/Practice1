@@ -16,5 +16,7 @@
 		</selectKey>
 		insert into charge values ( #{charge_num} , #{mem_id}, sysdate, #{charge_point}, '0')
 	</insert>
-	
+	<select id="myChargeList" parameterType="string" resultMap="chargeResult">
+		select * from charge where mem_id=#{mem_id}
+	</select>
 </mapper>

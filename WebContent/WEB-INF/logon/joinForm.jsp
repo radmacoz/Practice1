@@ -162,7 +162,7 @@ form .text {
 	<tr><th>주소</th><td><input type="text" name="address" placeholder="예) 서울시 강남구" required="required" ></td></tr>
 	<tr><th>생년월일</th><td><input type="text" name="birth" placeholder="예) 901224" required="required"></td></tr>
 	<tr><td colspan="2">
-               <textarea name="tos" rows=15 cols=100>
+               <textarea name="tos" rows=15 cols=70>
 판도라웹하드에서 저작권법, 컴퓨터 프로그램 보호법 및 동법률 시행령 등 관계법령에 따른 저작권보호 및 음란자료 예방을 통해 올바른 컨텐츠 판매문화가 이루어 질 수 있도록 노력하고 있사오니 다음사항에 대하여 협조해주시기 바랍니다.
 1. 판도라웹하드에는 판매자님이 저작권을 가지고 있는 파일이나 저작권자의 배포 및 전송 동의를 받은 파일을 등록할 수 있습니다.
 2. 법에 저촉되거나 미풍양속을 해치는 음란성 자료는 등록할 수 없으며 이를 판매, 배포할 시에는 관련법 등의 의해 처벌 받을 수 있습니다.
