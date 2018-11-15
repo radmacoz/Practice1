@@ -22,7 +22,7 @@ public class FileDown implements CommandProcess {
 		Download download = new Download();
 		DownloadDao dd = DownloadDao.getInstance();
 		download.setFile_num(file_num);
-		download.setMem_id(mem_id);
+		download.setDown_id(mem_id);
 		int result = dd.insert(download);
 		
 		MemberDao md = MemberDao.getInstance();

@@ -28,10 +28,7 @@
 			<th>내용</th>
 			<td>${req_board.board_content }</td>
 	</table>
-	<button>
-		<a href="requestReplyForm.do?board_num=${req_board.board_num }
-		&board_ref=${board_ref}&board_re_step=${board_re_step}&board_re_level=${board_re_level}">답변(미구현)</a>
-	</button>
+	<button><a href="requestReplyForm.do?board_num=${req_board.board_num }&board_ref=${req_board.board_ref}&board_re_step=${req_board.board_re_step}&board_re_level=${req_board.board_re_level}">답변</a></button>
 	<button>
 		<a href="requestUpdateForm.do?board_num=${req_board.board_num }">수정</a>
 	</button>

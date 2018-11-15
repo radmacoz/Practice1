@@ -57,7 +57,7 @@ body {
 	height: 400px;
 	float: left;
 	margin-left: 5px;
-	margin-top: 30px;
+	margin-top: 10px;
 	text-align: center;
 	background-color: white;
 }
@@ -70,17 +70,44 @@ body {
 #loginbutton {
 	height: 40px;
 	width: 150px;
-	background-color: #E8D9FF;
+	background-color: #B4D0FC;
 	float: none;
 }
 
 article {
 	width: 650px;
-	height: 600px;
+	height: 800px;
 	float: left;
 	margin-left: 5px;
-	margin-top: 30px;
+	margin-top: 10px;
 	border-radius: 10px;
+}
+
+table.reqbo {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+  	margin : 20px 10px;
+  	font-size: 13px;
+}
+table.reqbo th {
+    /* width: 147px; */
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #153d73;
+    border-right: 1px solid #ccc;
+    border-bottom: 3px solid #369;
+
+}
+table.reqbo td {
+    /* width: 349px; */
+    padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
 
 </style>
@@ -125,43 +152,56 @@ article {
 				</tr>
 			</c:if>
 			<tr>
-				<td scope="row" align="left">　· 고객상담</td>
-			</tr>
-			<tr>
 				<td scope="row" align="left">
 					<a href="reqBoardList.do">　· 자료요청 게시판</a></td>
 			</tr>
 			<tr>
 				<td scope="row" align="left">
-					<a href="chargeForm.do">　· 사은행사(배너 넣을 것)</a></td>
+					<a href="chargeForm.do"><img alt="" src="images/eventBan.png" width="220px"></a></td>
+			</tr>
+			<tr>
+				<td scope="row" align="left"><img alt="" src="images/counsel.gif" width="220px"></td>
 			</tr>
 		</table>
 
 	</div>
 
 	<article>
-	<table>
+	<table class="reqbo">
 		<tr>
 			<th>번호</th>
-			<th>분류</th>
-			<th width="300px">제목</th>
-			<th>작성자</th>
-			<th>날짜</th>
+			<th width="50px">분류</th>
+			<th width="200px">제목</th>
+			<th width="70px">작성자</th>
+			<th width="70px">날짜</th>
 			<th>조회수</th>
 		</tr>
 		<c:forEach var="req_board" items="${list }">
 			<c:if test="${req_board.board_del=='n' }">
 				<tr>
-					<td>${req_board.board_num }</td>
+					<td>
+						${req_board.board_num }
+					</td>
 					<td>${req_board.category }</td>
-					<td><a href="requestView.do?board_num=${req_board.board_num }">${req_board.board_subject }</td>
+					<td>
+						<c:if test="${req_board.board_readcount > 4}">
+							<img alt="" src="hot.gif">
+						</c:if>
+						<c:if test="${req_board.board_re_level>0}">
+							<c:forEach begin="1" end="${req_board.board_re_level}">
+								<img alt="" src="level.gif" height="5px" width="${req_board.board_re_level*3}">
+							</c:forEach>
+							<img alt="" src="re.gif">
+						</c:if>
+					<a href="requestView.do?board_num=${req_board.board_num }">${req_board.board_subject }
+					</td>
 					<td>${req_board.mem_id }</td>
 					<td>${req_board.board_re_date }</td>
 					<td align="center">${req_board.board_readcount}</td>
 				</tr>
 			</c:if>
 			<c:if test="${req_board.board_del=='y' }">
-				<td>삭제된 글입니다</td>
+				<tr><td colspan="6">삭제된 글입니다</td></tr>
 			</c:if>
 		</c:forEach>
 	</table>

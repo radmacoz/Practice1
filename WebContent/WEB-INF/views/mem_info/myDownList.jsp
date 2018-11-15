@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ include file="sessionChk.jsp"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,7 +54,6 @@ h1 strong {
 	color: #000;
 }
 
-h2 {margin-left: 60px;}
 /* Tables
 ----------------------------------------------- */
 table {
@@ -86,12 +85,11 @@ label:hover {
 }
 
 #reg table {
-	width: 410px;
+	width: 500px;
 	margin-left: 60px;
 }
 
 #reg th {
-	width: 25%;
 	padding-left: 0;
 }
 
@@ -113,38 +111,40 @@ form .text {
 #reg form .text {
 	width: 150px;
 }
-
-
 </style>
-<script type="text/javascript">
-	function chk() {
-		if(frm.password.value != frm.password2.value) {
-			alert("암호와 암호확인이 다릅니다");
-			frm.password.focus();
-			return false;
-		}
-	}
-</script>
 </head>
 <body id="reg">
-	<div id="body">
-	<h2>회원 정보 수정</h2>
-<form action="update.do" method="post" name="frm" onsubmit="return chk()">
-	<input type="hidden" name="id" value="${member.mem_id}">
-<table border="1">
-	<tr><th>아이디</th><td>${member.mem_id}</td></tr>
-	<tr><th>암호</th><td><input type="password" name="password" required="required" autofocus="autofocus"></td></tr>
-	<tr><th>암호확인</th><td><input type="password" name="password2" required="required"></td></tr>
-	<tr><th>이름</th><td>${member.mem_name}</td></tr>
-	<tr><th>이메일</th><td><input type="email" name="email" value="${member.mem_email}" required="required"></td></tr>
-	<tr><th>전화</th><td><input type="tel" name="tel" value="${member.mem_tel}" required="required" 
-		pattern="\d{3}-\d{3,4}-\d{4}" placeholder="xxx-xxxx-xxxx"></td></tr>
-	<tr><th>주소</th><td><input type="text" name="address" required="required" value="${member.mem_addr}"></td></tr>
-	<tr><th>생년월일</th><td><input type="text" name="birth" value="${member.mem_birth}" required="required"></td></tr>
-	<tr><th colspan="2"><input type="submit" value="수정"></th></tr>
-</table>
-</form>
-<a href="main.do">돌아가기</a>
+<c:set var="id" value="${sessionScope['id']}"></c:set>
+<div id="body">
+<h2>다운로드 내역</h2>
+		<table border="1">
+			<tr>
+				<th width="40px">파일 번호</th>
+				<th width="200px">파일 제목</th>
+				<th width="60px">포인트</th>
+				<th width="60px">용량</th>
+				<th width="60px">업로더</th>
+				<th width="100px">다운로드 날짜</th>
+				<th width="80px">다시 받기</th>
+			</tr>
+			<c:forEach var="download" items="${list}">
+				<tr>
+					<td>${download.file_num}</td>
+					<td>${download.file_name}</td>
+					<td>${download.file_point}pt</td>
+					<td>${download.file_size/1000}KB</td>
+					<td>${download.mem_id}</td>
+					<td>${download.down_date}</td>
+					<td><button style="font-size: 10px" onclick="redown('${download.file_num}','${id}')">다시 받기</button></td>
+				</tr>
+			</c:forEach>
+		</table>
+	<script type="text/javascript">
+	function redown(file_num,id) {
+		window.open("fileReSelect.up?file_num="+file_num+"&id="+id,"", "width=800 height=800");
+	}
+	</script>
+	
 </div>
 </body>
 </html>

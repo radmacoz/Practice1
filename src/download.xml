@@ -4,8 +4,12 @@
 <mapper namespace="downloadns">
 	<resultMap type="download" id="downloadResult">
 		<result property="down_num"	 column="down_num" />
-		<result property="file_num" 		 column="file_num" />
 		<result property="down_date" 	 column="down_date" />
+		<result property="down_id" 	 	 column="down_id" />
+		<result property="file_num" 		 column="file_num" />
+		<result property="file_name" 		 column="file_name" />
+		<result property="file_point" 		 column="file_point" />
+		<result property="file_size" 		 column="file_size" />
 		<result property="mem_id" 		 column="mem_id" />
 	</resultMap>
 	
@@ -13,7 +17,9 @@
 		<selectKey keyProperty="down_num" order="BEFORE" resultType="int">
 			select nvl(max(down_num),0)+1 from download
 		</selectKey>
-		insert into download values ( #{down_num}, #{file_num}, sysdate, #{mem_id})
+		insert into download values ( #{down_num}, #{file_num}, sysdate, #{down_id})
 	</insert>
-	
+	<select id="myDownList" parameterType="string" resultMap="downloadResult">
+		select * from download d, fileup f where d.file_num=f.file_num and down_id=#{mem_id} order by down_date desc
+	</select>
 </mapper>

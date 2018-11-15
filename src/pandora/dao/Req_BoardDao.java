@@ -63,5 +63,20 @@ public class Req_BoardDao {
 	public int delete(int board_num) {
 		return session.update("req_boardns.delete",board_num);
 	}
+	public int maxStep(int board_ref) {
+		return (int) session.selectOne("req_boardns.maxStep", board_ref);
+	}
+	public int increaseAncestor(int board_num) {
+		return session.update("req_boardns.increaseAncestor",board_num);
+	}
+	public int numupdate(Req_Board req_board) {
+		return session.update("req_boardns.numupdate", req_board);
+	}
+	public int reSelect(Req_Board req_board) {
+		return (int) session.selectOne("req_boardns.reSelect",req_board);
+	}
+	public int reInsert(Req_Board req_board) {
+		return session.insert("req_boardns.reInsert",req_board);
+	}
 
 }

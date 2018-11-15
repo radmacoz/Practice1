@@ -8,7 +8,7 @@
 <style type="text/css">
 #tframe		{
 	width: 950px;
-	height: 200px;
+	height: 170px;
 	border: none;
 	clear: both;
 }
@@ -16,20 +16,20 @@
 	text-align: right;
 	font-size: 12px;
 	height: 20px;
-	background-color: #BDBDBD;
+	background-color: #EAEAEA;
 }
 
 #logo	{
 	width: 120px;
-	height: 80px;
+	height: 40px;
 	float: left;
-	margin-top: 10px;
-	margin-left: 200px;
+	margin-top: 30px;
+	margin-left: 140px;
 }
 
 #search {
-	margin-left: 10px;
-	margin-top: 50px;
+	margin-left: 80px;
+	margin-top: 30px;
 	float: left;
 	border: 3px solid navy;
 	width: 500px;
@@ -69,8 +69,7 @@
 			href="chargeForm.do">캐시 충전</a> || <a href="myPage.do">내정보 관리</a>
 	</div>
 	<div id="logo">
-		<a href="main.do"><img alt="" src="images/2010.jpg" width="120"
-			height="80"></a>
+		<a href="main.do"><img alt="" src="images/2010.jpg" width="180px"></a>
 	</div>
 	<div id="search">
 <!-- 		<form action="fileSearch.up"> -->

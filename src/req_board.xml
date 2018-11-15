@@ -28,36 +28,6 @@
   board_del varchar2(5) not null,
   category varchar2(20) not null); -->
 
-	<select id="list" resultMap="req_boardResult">
-		<!-- select * from req_board order by board_num desc -->
-		select * from req_board order by board_ref desc, board_re_step
-	</select>
-	<insert id="insert" parameterType="req_board">
-		<selectKey keyProperty="board_num" order="BEFORE"
-			resultType="int">
-			select nvl(max(board_num), 0) + 1 from req_board
-		</selectKey>
-		insert into req_board values (
-		#{board_num},#{mem_id},#{board_subject},
-		#{board_content},0,#{board_num},0,0,sysdate,'n',#{category})
-	</insert>
-	<select id="getBoard" parameterType="int" resultType="req_board">
-		select *
-		from req_board where board_num=#{board_num}
-	</select>
-	<update id="readcount" parameterType="int">
-		update req_board set
-		board_readcount=board_readcount+1 where board_num=#{board_num}
-	</update>
-	<update id="update">
-		update req_board set board_subject=#{board_subject},
-		board_content=#{board_content}, category=#{category} where
-		board_num=#{board_num}
-	</update>
-	<update id="delete">
-		update req_board set board_del='y' where
-		board_num=#{board_num}
-	</update>
 <!--   	
 	<select id="list" parameterType="board" resultMap="resultMap">
 		select * from (select rowNum rn, a.* 
@@ -98,5 +68,62 @@
 	<update id="update">
 		update promotion set cid=#{cid},subject=#{subject},content=#{content} where bno=#{bno}
 	</update>	 -->
-  	
+
+	<select id="list" resultMap="req_boardResult">
+			select * from req_board order by board_num desc
+			<!-- select * from req_board order by board_num desc, board_ref desc, board_re_step desc, board_re_level desc -->
+	</select>
+	<insert id="insert" parameterType="req_board">
+		<selectKey keyProperty="board_num" order="BEFORE" resultType="int">
+			select nvl(max(board_num), 0) + 1 from req_board
+		</selectKey>
+		insert into req_board values (
+		#{board_num},#{mem_id},#{board_subject},
+		#{board_content},0,#{board_num},0,0,sysdate,'n',#{category})
+	</insert>
+	<select id="getBoard" parameterType="int" resultType="req_board">
+		select * from req_board where board_num=#{board_num}
+	</select>
+	<update id="readcount" parameterType="int">
+		update req_board set board_readcount=board_readcount+1 where board_num=#{board_num} 
+	</update>	
+	<update id="update">
+		update req_board set board_subject=#{board_subject}, board_content=#{board_content}, category=#{category} where board_num=#{board_num} 
+	</update>
+	<update id="delete" >
+		update req_board set  board_del='y' where board_num=#{board_num}
+	</update>
+	<select id="maxStep" parameterType="int" resultType="int">
+		select  nvl(max(board_re_step), 0)+1 from req_board where board_ref=#{board_ref}
+	</select>
+	<update id="numupdate" parameterType="req_board">	
+	<![CDATA[
+		update req_board set board_num=board_num+1
+			where board_num >
+				(select max(board_num) from req_board 
+				where board_num<#{board_num} 
+				and board_ref=#{board_ref}
+				and board_re_step=#{board_re_step}
+				and board_re_level=#{board_re_level})
+			and board_num<#{board_num}	
+		]]>
+	</update>	
+	<select id="reSelect" parameterType="req_board" resultType="int" >
+			<![CDATA[
+			select nvl(min(board_num),#{board_num})-1 from req_board  
+        	where board_num < #{board_num} 
+				and board_ref = #{board_ref}
+				and board_re_step = #{board_re_step}
+				and board_re_level = #{board_re_level}
+			]]>
+	</select>
+	<update id="increaseAncestor" parameterType="int">
+		update req_board set board_num=board_num+1 where board_num>=#{board_num} 
+	</update>	
+	<insert id="reInsert" parameterType="req_board">
+		insert into req_board values (
+		#{board_num},#{mem_id},#{board_subject},
+		#{board_content},0,#{board_ref},#{board_re_step},#{board_re_level},sysdate,'n',#{category})
+	</insert>
+	
 </mapper>

@@ -9,12 +9,10 @@ import pandora.model.FileUp;
 import pandora.model.Member;
 import pandora.service.CommandProcess;
 
-public class FileSelect implements CommandProcess {
+public class FileReSelect implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-		
-		// String id = (String)request.getSession().getAttribute("id");
 		String id = request.getParameter("id");
 		int file_num = Integer.parseInt(request.getParameter("file_num"));
 		FileUpDao fd = FileUpDao.getInstance();
@@ -25,8 +23,7 @@ public class FileSelect implements CommandProcess {
 		request.setAttribute("file_num", file_num);
 		request.setAttribute("fileup", fileup);
 		request.setAttribute("member", member);
-		
-		return "fileSelect";
+		return "fileReSelect";
 	}
 
 }

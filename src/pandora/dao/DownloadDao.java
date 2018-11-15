@@ -1,6 +1,7 @@
 package pandora.dao;
 
 import java.io.Reader;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -29,5 +30,8 @@ public class DownloadDao {
 	}
 	public int insert(Download download) {
 		return session.insert("downloadns.insert", download);
+	}
+	public List<Download> myDownList(String id) {
+		return session.selectList("downloadns.myDownList", id);
 	}
 }

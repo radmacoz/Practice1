@@ -57,7 +57,7 @@ body {
 	height: 400px;
 	float: left;
 	margin-left: 5px;
-	margin-top: 30px;
+	margin-top: 0px;
 	text-align: center;
 	background-color: white;
 }
@@ -70,16 +70,16 @@ body {
 #loginbutton {
 	height: 40px;
 	width: 150px;
-	background-color: #E8D9FF;
+	background-color: #B4D0FC;
 	float: none;
 }
 
 article {
 	width: 650px;
-	height: 600px;
+	height: 730px;
 	float: left;
 	margin-left: 5px;
-	margin-top: 30px;
+	margin-top: 10px;
 	border-radius: 10px;
 }
 /* 
@@ -128,15 +128,15 @@ article {
 				</tr>
 			</c:if>
 			<tr>
-				<td scope="row" align="left">　· 고객상담</td>
-			</tr>
-			<tr>
 				<td scope="row" align="left">
 					<a href="reqBoardList.do">　· 자료요청 게시판</a></td>
 			</tr>
 			<tr>
 				<td scope="row" align="left">
-					<a href="chargeForm.do">　· 사은행사(배너 넣을 것)</a></td>
+					<a href="chargeForm.do" ><img alt="" src="images/eventBan.png" width="220px"></a></td>
+			</tr>
+			<tr>
+				<td scope="row" align="left"><img alt="" src="images/counsel.gif" width="220px"></td>
 			</tr>
 		</table>
 

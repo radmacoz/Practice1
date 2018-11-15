@@ -30,13 +30,12 @@ body, form {
 /* Links
 ----------------------------------------------- */
 a {
-	font-weight: bold;
-	color: #36c;
+	text-decoration: none;
+	color: black;
 }
 
 a:hover {
-	text-decoration: underline;
-	color: #f60;
+	color: grey;
 }
 
 /* Titles
@@ -53,6 +52,7 @@ h1 strong {
 	color: #000;
 }
 
+h2 {margin-left: 60px;}
 /* Tables
 ----------------------------------------------- */
 table {
@@ -161,6 +161,12 @@ form .text {
 					</label></th>
 					<td class="desc"><c:if test="${member.mem_vip=='y'}">신청완료</c:if>
 						<c:if test="${member.mem_vip=='n'}">미신청</c:if></td>
+				<tr>
+					<th>다운로드 내역</th>
+					<td class="desc"><form action="myDownList.do">
+							<input type="submit" value="다운로드 내역">
+						</form></td>
+				</tr>
 				<tr>
 					<th>충전내역</th>
 					<td class="desc"><form action="myChargeList.do">
