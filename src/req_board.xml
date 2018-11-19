@@ -69,9 +69,13 @@
 		update promotion set cid=#{cid},subject=#{subject},content=#{content} where bno=#{bno}
 	</update>	 -->
 
-	<select id="list" resultMap="req_boardResult">
+	<!-- <select id="list" resultMap="req_boardResult">
 			select * from req_board order by board_num desc
-			<!-- select * from req_board order by board_num desc, board_ref desc, board_re_step desc, board_re_level desc -->
+			select * from req_board order by board_num desc, board_ref desc, board_re_step desc, board_re_level desc
+	</select> -->
+	<select id="list" parameterType="hashMap" resultMap="req_boardResult">
+			select * from (select rowNum rn, a.* from (select * from req_board order by board_num desc)a)
+			 where rn between #{startRow} and #{endRow}
 	</select>
 	<insert id="insert" parameterType="req_board">
 		<selectKey keyProperty="board_num" order="BEFORE" resultType="int">
@@ -125,5 +129,7 @@
 		#{board_num},#{mem_id},#{board_subject},
 		#{board_content},0,#{board_ref},#{board_re_step},#{board_re_level},sysdate,'n',#{category})
 	</insert>
-	
+	<select id="total" resultType="int" >
+		select count(*) from req_board 
+	</select>
 </mapper>

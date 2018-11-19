@@ -8,6 +8,15 @@
 <title>Insert title here</title>
 
 <style type="text/css">
+
+.out {
+	 width: 100%;
+	 text-align: center;
+ }
+.in {
+	 display: inline-block;
+ }
+
 	table.filelist {
 	margin: 10px;
     border-collapse: collapse;
@@ -83,6 +92,23 @@ button.sub_button:hover {
 		<td>${fileup.file_point }</td><td>${fileup.file_size }</td><td>${fileup.mem_id }</td></tr>
 </c:forEach> --%>
 	</table>
+
+	<div class="out">
+		<div class="in">
+			<c:if test="${ startPage > pagePerBlock }">
+				<input type="button" onclick="a2(${startPage-1})" value="이전">
+				<%-- <a href="main.do?pgm=fileList.up?pageNum=${startPage-1}">[이전]</a> --%>
+			</c:if>
+			<c:forEach var="i" begin="${startPage}" end="${endPage}">
+				<input type="button" onclick="a1(${i})" value="${i}">
+			</c:forEach>
+			<c:if test="${endPage<totPage}">
+				<input type="button" onclick="a3(${endPage+1})" value="다음">
+				<%-- <a href="main.do?pgm=fileList.up?pageNum=${endPage+1}">[다음]</a> --%>
+			</c:if>
+		</div>
+	</div>
+
 	<script type="text/javascript">
 	function chk(file_num,id) {
 		if (id==null || id=="")	{

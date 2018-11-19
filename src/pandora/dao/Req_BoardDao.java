@@ -1,6 +1,7 @@
 package pandora.dao;
 
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -28,8 +29,11 @@ public class Req_BoardDao {
 			System.out.println("session생성 : "+e.getMessage());
 		}
 	}
-	public List<Req_Board> list() {
-		return session.selectList("req_boardns.list");
+	public List<Req_Board> list(int startRow,int endRow) {
+		HashMap<String, Integer> hm = new HashMap<>();
+		hm.put("startRow", startRow);
+		hm.put("endRow", endRow);
+		return session.selectList("req_boardns.list",hm);
 	}	
 	public int insert(Req_Board req_board) {
 		return session.insert("req_boardns.insert", req_board);
@@ -77,6 +81,9 @@ public class Req_BoardDao {
 	}
 	public int reInsert(Req_Board req_board) {
 		return session.insert("req_boardns.reInsert",req_board);
+	}
+	public int total() {
+		return (int) session.selectOne("req_boardns.total");
 	}
 
 }

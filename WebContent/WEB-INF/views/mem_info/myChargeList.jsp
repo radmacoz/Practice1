@@ -31,13 +31,12 @@ body, form {
 /* Links
 ----------------------------------------------- */
 a {
-	font-weight: bold;
-	color: #36c;
+	text-decoration: none;
+	color: black;
 }
 
 a:hover {
-	text-decoration: underline;
-	color: #f60;
+	color: grey;
 }
 
 /* Titles

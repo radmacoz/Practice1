@@ -53,6 +53,12 @@
 	margin: 20px;
 	font-size: 16px;
 }
+
+#category ul li a {
+	text-decoration: none;
+	color: black;
+}
+
 #category ul li a:visited {
 	display: inline;
 	margin: 20px;
@@ -60,6 +66,11 @@
 	background-color: #5882FA;
 	text-decoration: none;
 }
+
+#category ul li a:hover {
+	color: grey;
+}
+
 </style>
 </head>
 <body>
@@ -74,7 +85,7 @@
 	<div id="search">
 <!-- 		<form action="fileSearch.up"> -->
 		<form action="" name="frm" method="post" onsubmit="fetchSearch()">
-			<select name="cate">
+			<select style="height: 22px" name="cate">
 				<optgroup label="카테고리">
 					<option value="">전체</option>
 					<option>도서</option>
@@ -85,14 +96,14 @@
 					<option>유틸</option>
 				</optgroup>
 			</select>
-			<select name="subject">
+			<select style="height: 22px" name="subject">
 				<optgroup label="선택">
 					<option value="mem_id">작성자</option>
 					<option value="file_name">제목</option>
 				</optgroup>
-			</select><input type="text" name="keyword" size="35"
-				placeholder="원하는 검색어를 입력하세요"> <input type="submit"
-				value="검색">
+			</select>
+			<input type="text" name="keyword" size="35" placeholder="원하는 검색어를 입력하세요">
+			<input type="submit" value="검색">
 		</form>
 	</div>
 	<script type="text/javascript">

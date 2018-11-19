@@ -146,6 +146,7 @@ article {
 		<%-- 	<jsp:include page="../uploadfile/introList.jsp"></jsp:include>
 		<a href="fileList.up">파일목록</a> --%>
 	</article>
+			<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript">
 		function fetchPage(name) {
 			fetch(name).then(function(response) {
@@ -168,6 +169,15 @@ article {
 			}
 			window.open("fileSelect.up?file_num=" + file_num + "&id=" + id, "",
 					"width=800 height=800");
+		}
+		function a1(n) {
+			$('article').load("fileList.up?pageNum="+n);
+		}
+		function a2(n) {
+			$('article').load("fileList.up?pageNum="+n);
+		}
+		function a3(n) {
+			$('article').load("fileList.up?pageNum="+n);
 		}
 	</script>
 

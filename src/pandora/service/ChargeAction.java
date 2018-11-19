@@ -22,12 +22,14 @@ public class ChargeAction implements CommandProcess {
 			/*String id = request.getParameter("id");*/
 			
 			int charge_point = Integer.parseInt(request.getParameter("charge"));
+			String acc_number = request.getParameter("acc_number");
 			
 			Charge charge = new Charge();
 			
 			
 			charge.setMem_id(id);
 			charge.setCharge_point(charge_point);
+			charge.setCharge_account(acc_number);
 			
 			ChargeDao cd = ChargeDao.getInstance();
 			int result1 = cd.insert(charge);

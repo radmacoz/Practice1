@@ -13,22 +13,20 @@
 </style>
 </head>
 <body>
-<h2>회원 목록</h2>
+<h2>충전 목록</h2>
 	<table>
 		<tr>
-			<th>아이디</th>
+			<th>회원 아이디</th>
+			<th>충전 일자</th>
 			<th>충전 포인트</th>
-			<th>결제 금액</th>
-			<th>충전일</th>
-			<th>누적 결제 금액</th>
+			<th>결제 계좌번호</th>
 		</tr>
-		<c:forEach var="i" begin="1" end="30">
+		<c:forEach var="charge" items="${list }">
 			<tr>
-				<td>아이디${i }</td>
-				<td>충전 포인트${i }</td>
-				<td>결제 금액${i }</td>
-				<td>충전일${i }</td>
-				<td>누적 결제 금액${i }</td>
+				<td>${charge.mem_id }</td>
+				<td>${charge.charge_date }</td>
+				<td>${charge.charge_point }</td>
+				<td>${charge.charge_account }</td>
 			</tr>
 		</c:forEach>
 	</table>

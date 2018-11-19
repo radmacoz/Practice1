@@ -31,13 +31,12 @@ body, form {
 /* Links
 ----------------------------------------------- */
 a {
-	font-weight: bold;
-	color: #36c;
+	text-decoration: none;
+	color: black;
 }
 
 a:hover {
-	text-decoration: underline;
-	color: #f60;
+	color: grey;
 }
 
 /* Titles
@@ -144,7 +143,7 @@ form .text {
 	<tr><th colspan="2"><input type="submit" value="수정"></th></tr>
 </table>
 </form>
-<a href="main.do">돌아가기</a>
+<a href="myPage.do">돌아가기</a><a href="main.do">메인으로</a>
 </div>
 </body>
 </html>

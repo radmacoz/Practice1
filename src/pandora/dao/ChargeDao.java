@@ -43,7 +43,7 @@ public class ChargeDao {
 	public List<Charge> myChargeList(String id) {
 		return session.selectList("chargens.myChargeList", id);
 	}
-/*	public int charge(Charge charge) {
-		return session.update("chargens.charge", charge);
-	}*/
+	public List<Charge> chargeList() {
+		return session.selectList("chargens.chargeList");
+	}
 }

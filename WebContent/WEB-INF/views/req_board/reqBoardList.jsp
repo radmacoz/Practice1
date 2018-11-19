@@ -119,95 +119,105 @@ table.reqbo td {
 		<table class="side">
 			<c:if test="${empty id}">
 				<tr>
-					<td scope="row" align="center"><p id="p1">판도라 박스를 더 쉽고 안전하게 이용하세요</p>
-					<a href="logonForm.lo">
-						<button id="loginbutton">판도라 박스 로그인</button></a><br> 
-						<a href="joinForm.lo">무료회원가입</a></td>
+					<td scope="row" align="center"><p id="p1">판도라 박스를 더 쉽고
+							안전하게 이용하세요</p> <a href="logonForm.lo">
+							<button id="loginbutton">판도라 박스 로그인</button>
+					</a><br> <a href="joinForm.lo">무료회원가입</a></td>
 				</tr>
 			</c:if>
 			<c:if test="${!empty id}">
 				<tr>
-					<td scope="row" align="center"><p id="p1">판도라 박스를 더 쉽고 안전하게 이용하세요</p>
-						<h3>${sessionScope['id']}님<br>반갑습니다</h3>
-						보유포인트 : <a href="myChargeList.do">${member.mem_point}</a>
-						<a href="logout.lo"><br><br>
-						<button	id="loginbutton">로그아웃</button></a>
-					</td>
+					<td scope="row" align="center"><p id="p1">판도라 박스를 더 쉽고
+							안전하게 이용하세요</p>
+						<h3>${sessionScope['id']}님<br>반갑습니다
+						</h3> 보유포인트 : <a href="myChargeList.do">${member.mem_point}</a> <a
+						href="logout.lo"><br>
+						<br>
+							<button id="loginbutton">로그아웃</button></a></td>
 				</tr>
 				<tr>
-					<td scope="row"><a href="myPage.do">　· 내 정보 관리</a></td>
+					<td scope="row"><a href="myPage.do"> · 내 정보 관리</a></td>
 				</tr>
 				<tr>
-					<td scope="row"><a href="chargeForm.do">　· 캐시충전</a></td>
+					<td scope="row"><a href="chargeForm.do"> · 캐시충전</a></td>
 				</tr>
-			<c:if test="${member.mem_vip == 'n' }">
-				<tr>
-					<td scope="row"><a href="vipApplyForm.do">　· 판매자 신청</a></td>
-				</tr>
-			</c:if>
+				<c:if test="${member.mem_vip == 'n' }">
+					<tr>
+						<td scope="row"><a href="vipApplyForm.do"> · 판매자 신청</a></td>
+					</tr>
+				</c:if>
 			</c:if>
 			<c:if test="${member.mem_vip == 'y' }">
 				<tr>
-					<td scope="row"><a href="fileUploadForm.up">　· 파일 업로드</a></td>
+					<td scope="row"><a href="fileUploadForm.up"> · 파일 업로드</a></td>
 				</tr>
 			</c:if>
 			<tr>
-				<td scope="row" align="left">
-					<a href="reqBoardList.do">　· 자료요청 게시판</a></td>
+				<td scope="row" align="left"><a href="reqBoardList.do"> ·
+						자료요청 게시판</a></td>
 			</tr>
 			<tr>
-				<td scope="row" align="left">
-					<a href="chargeForm.do"><img alt="" src="images/eventBan.png" width="220px"></a></td>
+				<td scope="row" align="left"><a href="chargeForm.do"><img
+						alt="" src="images/eventBan.png" width="220px"></a></td>
 			</tr>
 			<tr>
-				<td scope="row" align="left"><img alt="" src="images/counsel.gif" width="220px"></td>
+				<td scope="row" align="left"><img alt=""
+					src="images/counsel.gif" width="220px"></td>
 			</tr>
 		</table>
 
 	</div>
 
 	<article>
-	<table class="reqbo">
-		<tr>
-			<th>번호</th>
-			<th width="50px">분류</th>
-			<th width="200px">제목</th>
-			<th width="70px">작성자</th>
-			<th width="70px">날짜</th>
-			<th>조회수</th>
-		</tr>
-		<c:forEach var="req_board" items="${list }">
-			<c:if test="${req_board.board_del=='n' }">
-				<tr>
-					<td>
-						${req_board.board_num }
-					</td>
-					<td>${req_board.category }</td>
-					<td>
-						<c:if test="${req_board.board_readcount > 4}">
-							<img alt="" src="hot.gif">
-						</c:if>
-						<c:if test="${req_board.board_re_level>0}">
-							<c:forEach begin="1" end="${req_board.board_re_level}">
-								<img alt="" src="level.gif" height="5px" width="${req_board.board_re_level*3}">
-							</c:forEach>
-							<img alt="" src="re.gif">
-						</c:if>
-					<a href="requestView.do?board_num=${req_board.board_num }">${req_board.board_subject }
-					</td>
-					<td>${req_board.mem_id }</td>
-					<td>${req_board.board_re_date }</td>
-					<td align="center">${req_board.board_readcount}</td>
-				</tr>
+		<table class="reqbo">
+			<tr>
+				<th>번호</th>
+				<th width="50px">분류</th>
+				<th width="200px">제목</th>
+				<th width="70px">작성자</th>
+				<th width="70px">날짜</th>
+				<th>조회수</th>
+			</tr>
+			<c:forEach var="req_board" items="${list }">
+				<c:if test="${req_board.board_del=='n' }">
+					<tr>
+						<td>${req_board.board_num }</td>
+						<td>${req_board.category }</td>
+						<td><c:if test="${req_board.board_readcount > 4}">
+								<img alt="" src="hot.gif">
+							</c:if> <c:if test="${req_board.board_re_level>0}">
+								<c:forEach begin="1" end="${req_board.board_re_level}">
+									<img alt="" src="level.gif" height="5px"
+										width="${req_board.board_re_level*3}">
+								</c:forEach>
+								<img alt="" src="re.gif">
+							</c:if> <a href="requestView.do?board_num=${req_board.board_num }">${req_board.board_subject }</td>
+						<td>${req_board.mem_id }</td>
+						<td>${req_board.board_re_date }</td>
+						<td align="center">${req_board.board_readcount}</td>
+					</tr>
+				</c:if>
+				<c:if test="${req_board.board_del=='y' }">
+					<tr>
+						<td colspan="6">삭제된 글입니다</td>
+					</tr>
+				</c:if>
+			</c:forEach>
+		</table>
+		<div align="center">
+			<c:if test="${startPage > pagePerBlock }">
+				<a href="reqBoardList.do?pageNum=${startPage-1 }">이전</a>
 			</c:if>
-			<c:if test="${req_board.board_del=='y' }">
-				<tr><td colspan="6">삭제된 글입니다</td></tr>
+			<c:forEach var="i" begin="${startPage}" end="${endPage}">
+				<a href="reqBoardList.do?pageNum=${i}">[${i}]</a>
+			</c:forEach>
+			<c:if test="${endPage < totPage }">
+				<a href="reqBoardList.do?pageNum=${endPage+1 }">다음</a>
 			</c:if>
-		</c:forEach>
-	</table>
-		<a href="requestForm.do"><button>자료 요청하기</button></a>
-		<a href="reqBoardList.do?writer=${req_board.mem_id }"><button>내가 신청한 자료</button></a>
-		<a href="main.do"><button>메인으로</button></a>
+		</div>
+		<a href="requestForm.do"><button>자료 요청하기</button></a> <a
+			href="reqBoardList.do?writer=${req_board.mem_id }"><button>내가
+				신청한 자료</button></a> <a href="main.do"><button>메인으로</button></a>
 	</article>
 </body>
 </html>

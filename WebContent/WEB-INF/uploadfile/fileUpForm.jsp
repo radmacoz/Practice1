@@ -58,7 +58,7 @@
 				<td><input type="file" name="file1" required="required"></td>
 			</tr>
 			<tr>
-				<th>파일 스샷첨부(옵션)</th>
+				<th>파일 스크린샷</th>
 				<td><input type="file" name="file2"></td>
 			</tr>
 			<!-- 	<tr>
