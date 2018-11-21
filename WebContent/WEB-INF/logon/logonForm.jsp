@@ -6,121 +6,63 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-
 <style type="text/css">
-html body {
-	text-align: center;
-	font: small "Trebuchet MS", Verdana, Arial, Sans-serif;
-	color: #333;
-}
 
-body, form {
-	margin: 0;
-	padding: 0;
-}
-
-/* Page Structure
------------------------------------------------ */
-#body {
-	width: 400px;
-	padding: 10px 0 15px;
-	margin: 0 auto;
-	text-align: left;
-}
-
-/* Links
------------------------------------------------ */
 a {
-	font-weight: bold;
-	color: #36c;
+	text-decoration: none;
+	color: black;
 }
 
 a:hover {
-	text-decoration: underline;
-	color: #f60;
+	color: grey;
 }
 
-/* Titles
------------------------------------------------ */
-h1 {
-	margin: 0 0 15px 60px;
-	font-size: 220%;
-	line-height: 1.2em;
-	font-weight: normal;
-	color: #666;
+
+article {
+	width: 650px;
+	height: 425px;
+	/* float: right; */
+	margin-left: 20%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 10px;
 }
 
-h1 strong {
-	color: #000;
+table.logonForm {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+  	margin : 10px 10px;
+  	font-size: 13px;
 }
-
-/* Tables
------------------------------------------------ */
-table {
-	background: #fff url("bg_table.jpg") repeat-x left top;
-	border-width: 0;
-	font-size: 100%;
-	color: #333;
-	width: 100%;
+table.logonForm th {
+    /* width: 147px; */
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #153d73;
+    border-bottom: 1px solid #ccc;
+    border-right: 2px solid #369;
+	width: 80px;
 }
-
-th, td {
-	border-top: 1px solid #CABBA9;
-	border-width: 1px 0 0 0;
-	padding: 5px 10px;
-	font-size: 93%;
-	line-height: 1.5em;
+table.logonForm td {
+    /* width: 349px; */
+    padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    width: 300px;
 }
-
-th {
-	background: #fff;
-	padding-left: 5px;
-	font-size: 100%;
-	color: #664E38;
-	text-align: left;
-}
-
-label:hover {
-	cursor: pointer;
-}
-
-#reg table {
-	width: 380px;
-	margin-left: 60px;
-}
-
-#reg th {
-	width: 25%;
-	padding-left: 0;
-}
-
-#reg th, #reg td {
-	vertical-align: top;
-}
-
-form .desc {
-	width: 25%;
-	color: #826C55;
-	font-size: 88%;
-}
-
-form .text {
-	border: 1px solid #E1D4C0;
-	border-color: #CABBA9 #E1D4C0 #E1D4C0 #CABBA9;
-}
-
-#reg form .text {
-	width: 150px;
-}
-
 
 </style>
 </head>
 <body>
-<div id="body">
+<article>
 <form action="logon.lo">
 		<h2>로그인</h2>
-		<table border="1">
+		<table border="1" class="logonForm">
 			<tr>
 				<th>아이디</th>
 				<td><input type="text" name="id" id="id" required="required"
@@ -140,6 +82,6 @@ form .text {
 		<a href="main.do">메인으로</a>
 		<!-- 체크하는 자바스크립트 함수 필요 -->
 </form>
-</div>
+</article>
 </body>
 </html>

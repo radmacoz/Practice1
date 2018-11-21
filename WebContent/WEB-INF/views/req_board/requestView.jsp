@@ -6,15 +6,51 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	article	{
-		width: 650px;
-		float: right;
-	}
+article {
+	width: 650px;
+	height: 800px;
+	float: right;
+	margin-left: 5px;
+	margin-top: 10px;
+	border-radius: 10px;
+}
+
+table.reqbo {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+  	margin : 10px 10px;
+  	font-size: 13px;
+}
+table.reqbo th {
+    /* width: 147px; */
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #153d73;
+    border-bottom: 1px solid #ccc;
+    border-right: 2px solid #369;
+
+}
+table.reqbo td {
+    /* width: 349px; */
+    padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    width: 500px;
+}
+
 </style>
 </head>
 <body>
+	<!-- ====================== 사이드 메뉴 시작 ====================== -->
+	<jsp:include page="../../logon/logonSide.jsp"></jsp:include>
+	<!-- ====================== 사이드 메뉴 끝 ====================== -->
 	<article>
-	<table border="1">
+	<table border="1" class="reqbo">
 		<tr>
 			<th>제목</th>
 			<td width="300">${req_board.board_subject }</td>

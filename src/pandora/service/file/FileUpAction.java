@@ -11,7 +11,9 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import pandora.dao.FileUpDao;
+import pandora.dao.MemberDao;
 import pandora.model.FileUp;
+import pandora.model.Member;
 import pandora.service.CommandProcess;
 
 public class FileUpAction implements CommandProcess {
@@ -22,6 +24,14 @@ public class FileUpAction implements CommandProcess {
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException e) {	}
+		
+
+		if((String)request.getSession().getAttribute("id")!=null) {
+			String id = (String)request.getSession().getAttribute("id");
+			MemberDao md = MemberDao.getInstance();
+			Member member = md.select(id);
+			request.setAttribute("member", member);
+		}
 		
 		String realFolder = "";
 		int maxsize = 1024*1024*50;	// 50MB
@@ -60,6 +70,7 @@ public class FileUpAction implements CommandProcess {
 		FileUpDao fd = FileUpDao.getInstance();
 		int result = fd.insert(file);
 		request.setAttribute("result", result);
+		
 		
 		return "fileUpload";
 		

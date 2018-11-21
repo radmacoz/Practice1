@@ -50,8 +50,28 @@ public class FileList implements CommandProcess {
 			request.setAttribute("totPage", totPage);
 			
 		}	else	{
-			List<FileUp> list2 = fd.list2(category);
+			List<FileUp> list2 = fd.list2(category, startRow, endRow);
+			
+			int totCategory = fd.total(category);
+			int totalCategory = fd.total(category) - startRow + 1;
+			int startPage = currentPage - (currentPage -1)% pagePerBlock;
+			int endPage = startPage + pagePerBlock -1;
+			int totPage = (int)Math.ceil((double)totCategory/rowPerPage);
+			if (endPage>totPage) endPage = totPage;
+			
 			request.setAttribute("list", list2);
+			request.setAttribute("rowPerPage", rowPerPage);
+			request.setAttribute("pagePerBlock", pagePerBlock);
+			request.setAttribute("pageNum", pageNum);
+			request.setAttribute("currentPage", currentPage);
+			request.setAttribute("startRow", startRow);
+			request.setAttribute("endRow", endRow);
+			request.setAttribute("tot", totCategory);
+			request.setAttribute("total", totalCategory);
+			request.setAttribute("startPage", startPage);
+			request.setAttribute("endPage", endPage);
+			request.setAttribute("totPage", totPage);
+			request.setAttribute("category", category);
 		}
 /*		System.out.println("갯수 : "+list.size());  에러 검출을 위한 출력 메시지*/
 		return "fileList";

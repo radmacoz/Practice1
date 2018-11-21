@@ -37,8 +37,12 @@ public class FileUpDao {
 		return session.selectList("fileupns.list", hm);
 	}
 	/*분류에 해당하는 파일리스트 불러오는 메소드*/
-	public List<FileUp> list2(String category) {
-		return session.selectList("fileupns.list2", category);
+	public List<FileUp> list2(String category, int startRow, int endRow) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("category", category);
+		hm.put("startRow", startRow);
+		hm.put("endRow", endRow);
+		return session.selectList("fileupns.list2", hm);
 	}
 	/*파일 검색 중 분류가 전체에 해당하는 파일리스트 불러오는 메소드*/
 	public List<FileUp> listSearch1(HashMap<String, Object> hm) {
@@ -59,6 +63,10 @@ public class FileUpDao {
 	/*페이징을 위해 전체 목록의 개수를 구하는 메소드*/
 	public int total() {
 		return (int) session.selectOne("fileupns.total");
+	}
+	/*카테고리별 페이징을 위해 카테고리에 해당하는 목록의 개수를 구하는 메소드*/
+	public int total(String category) {
+		return (int) session.selectOne("fileupns.totalCategory", category);
 	}
 
 	/* 참고 메소드 목록

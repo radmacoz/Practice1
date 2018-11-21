@@ -7,124 +7,91 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-html body {
-	text-align: center;
-	font: small "Trebuchet MS", Verdana, Arial, Sans-serif;
-	color: #333;
+
+
+article {
+	width: 650px;
+	height: 800px;
+	float: left;
+	margin-left: 5px;
+	margin-top: 0px;
+	border-radius: 10px;
 }
 
-body, form {
-	margin: 0;
-	padding: 0;
+table.charge {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+  	margin : 10px 10px;
+  	font-size: 13px;
+  	width: 450px;
+}
+table.charge th {
+    /* width: 147px; */
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #153d73;
+    border-right: 1px solid #ccc;
+    border-bottom: 2px solid #369;
+
+}
+table.charge td {
+    /* width: 349px; */
+    padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
 
-/* Page Structure
------------------------------------------------ */
-#body {
-	width: 710px;
-	padding: 10px 0 15px;
-	margin: 0 auto;
-	text-align: left;
+table.charge2 {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+  	margin : 10px 10px;
+  	font-size: 13px;
+  	width: 450px;
+}
+table.charge2 th {
+    /* width: 147px; */
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #153d73;
+    border-bottom: 1px solid #ccc;
+    border-right: 2px solid #369;
+
+}
+table.charge2 td {
+    /* width: 349px; */
+    padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
 
-/* Links
------------------------------------------------ */
-a {
-	text-decoration: none;
-	color: black;
-}
-
-a:hover {
-	color: grey;
-}
-
-/* Titles
------------------------------------------------ */
-h1 {
-	margin: 0 0 15px 60px;
-	font-size: 220%;
-	line-height: 1.2em;
-	font-weight: normal;
-	color: #666;
-}
-
-h1 strong {
-	color: #000;
-}
-
-/* Tables
------------------------------------------------ */
-table {
-	background: #fff url("bg_table.jpg") repeat-x left top;
-	border-width: 0;
-	font-size: 100%;
-	color: #333;
-	width: 100%;
-}
-
-th, td {
-	border-top: 1px solid #CABBA9;
-	border-width: 1px 0 0 0;
-	padding: 5px 10px;
-	font-size: 93%;
-	line-height: 1.5em;
-}
-
-th {
-	background: #fff;
-	padding-left: 5px;
-	font-size: 100%;
-	color: #664E38;
-	text-align: left;
-}
-
-label:hover {
-	cursor: pointer;
-}
-
-#reg table {
-	width: 410px;
-	margin-left: 60px;
-}
-
-#reg th {
-	width: 25%;
-	padding-left: 0;
-}
-
-#reg th, #reg td {
-	vertical-align: top;
-}
-
-form .desc {
-	width: 25%;
-	color: #826C55;
-	font-size: 88%;
-}
-
-form .text {
-	border: 1px solid #E1D4C0;
-	border-color: #CABBA9 #E1D4C0 #E1D4C0 #CABBA9;
-}
-
-#reg form .text {
-	width: 150px;
-}
 .char1 {margin-left: 50px; }
 .subbutton {margin-left: 240px; }
 </style>
 </head>
-<body id="reg">
-<div id="body">
+<body>
+	<!-- ====================== 사이드 메뉴 시작 ====================== -->
+	<jsp:include page="../logon/logonSide.jsp"></jsp:include>
+	<!-- ====================== 사이드 메뉴 끝 ====================== -->
+	
 	<c:set var="id" value="${sessionScope['id']}"></c:set>
 	<article>
 		<c:if test="${empty id}">
-			<table cellpadding="5" cellspacing="0" border="1">
+			<table border="1" class="charge">
 
 				<tr>
-					<th><label for="f-user"> 로그인이<br>필요합니다
-					</label></th>
-					<td class="desc"><a href="logonForm.lo">
+					<th> 로그인이<br>필요합니다
+					</th>
+					<td><a href="logonForm.lo">
 							<button>판도라 박스 로그인</button>
 					</a></td>
 				</tr>
@@ -132,45 +99,51 @@ form .text {
 		</c:if>
 		<c:if test="${!empty id}">
 			<form action="charge.do" method="post">
-				<table>
-					<h2 class="char1">포인트 충전</h2>
+				<table class="charge">
+					<tr>
+						<td colspan="3"><font size="4" style="font-weight: bold">포인트 충전</font></td>
+					</tr>
 					<tr>
 						<th>선택 버튼</th>
 						<th>충전 금액</th>
-						<th>충전 포인트</th>
+						<th width="130">충전 포인트</th>
 					<tr>
-						<td><input type="radio" name="charge" value="4000"
-							checked="checked">옵션1</td>
+						<td><label for="opt1"><input type="radio" name="charge" value="4000"
+							checked="checked" id="opt1">옵션1</label></td>
 						<td>5,000원</td>
 						<td>4,000 point</td>
 					</tr>
 					<tr>
-						<td><input type="radio" name="charge" value="10000">옵션2</td>
+						<td><label for="opt2"><input type="radio" name="charge" value="10000" id="opt2">옵션2</label></td>
 						<td>10,000원</td>
 						<td>10,000 point</td>
 					</tr>
 					<tr>
-						<td><input type="radio" name="charge" value="25000">옵션3</td>
+						<td><label for="opt3"><input type="radio" name="charge" value="25000" id="opt3">옵션3</label></td>
 						<td>20,000원</td>
 						<td>25,000 point</td>
 					</tr>
 					<tr>
-						<td><input type="radio" name="charge" value="80000">옵션4</td>
+						<td><label for="opt4"><input type="radio" name="charge" value="80000" id="opt4">옵션4</label></td>
 						<td>50,000원</td>
 						<td>80,000 point</td>
 					</tr>
 					<tr>
-						<td><input type="radio" name="charge" value="200000">옵션5</td>
+						<td><label for="opt5"><input type="radio" name="charge" value="200000" id="opt5">옵션5</label></td>
 						<td>100,000원</td>
 						<td>200,000 point</td>
 					</tr>
 
 				</table>
 
-				<h2 class="char1">무통장 입금</h2>
+				<!-- <h2 class="char1">무통장 입금</h2>
 				<p class="char1">무통장 입금을 이용하시려면 계좌 정보를 입력해주세요.</p>
-
-				<table>
+ -->
+				<table class="charge2">
+				
+					<tr>
+						<td colspan="2"><font size="4" style="font-weight: bold">무통장 입금</font></td>
+					</tr>
 					<tr>
 						<th>예금주명</th>
 						<td><input type="text" name="acc_name"></td>
@@ -189,6 +162,5 @@ form .text {
 			</form>
 		</c:if>
 	</article>
-</div>
 </body>
 </html>

@@ -18,9 +18,12 @@
 	<select id="list" parameterType="hashMap" resultMap="fileupResult">
 		select * from (select rowNum rn, a.* from (select * from fileup order by file_num desc)a) where rn between #{startRow} and #{endRow}
 	</select>
-	<select id="list2" parameterType="String" resultMap="fileupResult">
-		select * from fileup where category=#{category}
+	<select id="list2" parameterType="hashMap" resultMap="fileupResult">
+		select * from (select rowNum rn, a.* from (select * from fileup where category=#{category} order by file_num desc)a) where rn between #{startRow} and #{endRow}
 	</select>
+	<!-- <select id="list2" parameterType="String" resultMap="fileupResult">
+		select * from fileup where category=#{category}
+	</select> 페이징 전 카테고리 -->
 	<select id="list3" parameterType="hashMap" resultMap="fileupResult">
 		select * from fileup where ${subject} like '%'||#{keyword }||'%'
 	</select>
@@ -39,5 +42,8 @@
 	</insert>
 	<select id="total" resultType="int">
 		select count(*) from fileup
+	</select>
+	<select id="totalCategory" parameterType="String" resultType="int">
+		select count(*) from fileup where category=#{category}
 	</select>
 </mapper>

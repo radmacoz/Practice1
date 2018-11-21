@@ -5,6 +5,45 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+
+article {
+	width: 650px;
+	height: 800px;
+	float: right;
+	margin-left: 5px;
+	margin-top: 10px;
+	border-radius: 10px;
+}
+table.fileUpForm {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+  	margin : 10px 10px;
+  	font-size: 13px;
+}
+table.fileUpForm th {
+    /* width: 147px; */
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #153d73;
+    border-bottom: 1px solid #ccc;
+    border-right: 2px solid #369;
+
+}
+table.fileUpForm td {
+    /* width: 349px; */
+    padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    width: 500px;
+}
+
+</style>
 <script type="text/javascript">
 	function chk() {
 		/* var str = "분류 선택\n";
@@ -24,12 +63,17 @@
 
 </head>
 <body>
+	<!-- ====================== 사이드 메뉴 시작 ====================== -->
+	<jsp:include page="../logon/logonSide.jsp"></jsp:include>
+	<!-- ====================== 사이드 메뉴 끝 ====================== -->
+<article>
 	<form action="fileUpload.up" method="post" name="frm"
 		onsubmit="return chk()" enctype="multipart/form-data">
 		<input type="hidden" name="mem_id" value="${sessionScope['id']}">
 		<!-- id를 표현식으로 수정할 것 -->
-		<table border="1">
-			<caption>판도라 박스 업로드</caption>
+		<table border="1" class="fileUpForm">
+			<tr>
+				<td colspan="2"><font size="4" style="font-weight: bold">자료 업로드</font></td>
 			<tr>
 				<th>파일 제목</th>
 				<td><input type="text" name="file_name" required="required"
@@ -73,12 +117,9 @@
 				<th>파일 포인트</th>
 				<td><input type="number" name="file_point" required="required"></td>
 			</tr>
-			<tr>
-				<th colspan="2"><input type="submit" value="확인"></th>
-			</tr>
-
 		</table>
+		<p align="center"><input type="submit" value="확인"></p>
 	</form>
-
+</article>
 </body>
 </html>

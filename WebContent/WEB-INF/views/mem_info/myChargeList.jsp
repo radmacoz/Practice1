@@ -1,35 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ include file="sessionChk.jsp"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-html body {
-	text-align: center;
-	font: small "Trebuchet MS", Verdana, Arial, Sans-serif;
-	color: #333;
-}
-
-body, form {
-	margin: 0;
-	padding: 0;
-}
-
-/* Page Structure
------------------------------------------------ */
-#body {
-	width: 710px;
-	padding: 10px 0 15px;
-	margin: 0 auto;
-	text-align: left;
-}
-
-/* Links
------------------------------------------------ */
 a {
 	text-decoration: none;
 	color: black;
@@ -39,92 +17,125 @@ a:hover {
 	color: grey;
 }
 
-/* Titles
------------------------------------------------ */
-h1 {
-	margin: 0 0 15px 60px;
-	font-size: 220%;
-	line-height: 1.2em;
-	font-weight: normal;
-	color: #666;
-}
-
-h1 strong {
-	color: #000;
-}
-
-h2 {margin-left: 60px;}
-/* Tables
------------------------------------------------ */
-table {
-	background: #fff url("bg_table.jpg") repeat-x left top;
-	border-width: 0;
-	font-size: 100%;
-	color: #333;
-	width: 100%;
-}
-
-th, td {
-	border-top: 1px solid #CABBA9;
-	border-width: 1px 0 0 0;
-	padding: 5px 10px;
-	font-size: 93%;
-	line-height: 1.5em;
-}
-
-th {
-	background: #fff;
-	padding-left: 5px;
-	font-size: 100%;
-	color: #664E38;
+table.side {
+	border-collapse: separate;
+	border-spacing: 0;
 	text-align: left;
+	line-height: 1.5;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	margin: 20px 10px;
 }
-
-label:hover {
-	cursor: pointer;
-}
-
-#reg table {
-	width: 500px;
-	margin-left: 60px;
-}
-
-#reg th {
-	width: 25%;
-	padding-left: 0;
-}
-
-#reg th, #reg td {
+/* 
+table.side th {
+	width: 250px;
+	padding: 10px;
+	font-weight: bold;
 	vertical-align: top;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #fff;
+	border-left: 1px solid #fff;
+	background: #eee;
+} */
+table.side td {
+	width: 350px;
+	padding: 10px;
+	vertical-align: top;
+	/* text-align: center; */
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	font-size: 13px;
 }
 
-form .desc {
-	width: 25%;
-	color: #826C55;
-	font-size: 88%;
+body {
+	width: 950px;
 }
 
-form .text {
-	border: 1px solid #E1D4C0;
-	border-color: #CABBA9 #E1D4C0 #E1D4C0 #CABBA9;
+#sidemenu {
+	width: 250px;
+	height: 400px;
+	float: left;
+	margin-left: 5px;
+	margin-top: 10px;
+	text-align: center;
+	background-color: white;
 }
 
-#reg form .text {
+#p1 {
+	font-weight: lighter;
+	font-size: 10px;
+}
+
+#loginbutton {
+	height: 40px;
 	width: 150px;
+	background-color: #B4D0FC;
+	float: none;
+}
+
+article {
+	width: 650px;
+	height: 800px;
+	float: left;
+	margin-left: 5px;
+	margin-top: 0px;
+	border-radius: 10px;
+}
+
+table.chargeList {
+	border-collapse: collapse;
+	text-align: left;
+	line-height: 1.5;
+	border-left: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	margin: 10px 10px;
+	font-size: 13px;
+	width: 400px;
+}
+
+table.chargeList th {
+	/* width: 147px; */
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	color: #153d73;
+	border-right: 1px solid #ccc;
+	border-bottom: 3px solid #369;
+}
+
+table.chargeList td {
+	/* width: 349px; */
+	padding: 10px;
+	vertical-align: top;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
 }
 </style>
 </head>
-<body id="reg">
-<c:set var="id" value="${sessionScope['id']}"></c:set>
-<div id="body">
-<h2>충전내역</h2>
-<table border="1">
-	<tr><th>충전내역</th><th>충전일시</th></tr>
-<c:forEach var="charge" items="${list}">
-	<tr><td>${charge.charge_point} 포인트</td><td>${charge.charge_date}</td></tr>
-</c:forEach>
+<body>
 
-</table>
-</div>
+	<!-- ====================== 사이드 메뉴 시작 ====================== -->
+	<jsp:include page="../../logon/logonSide.jsp"></jsp:include>
+	<!-- ====================== 사이드 메뉴 끝 ====================== -->
+
+	<c:set var="id" value="${sessionScope['id']}"></c:set>
+	<article>
+		<table border="1" class="chargeList">
+			<tr>
+				<td colspan="2"><font size="4" style="font-weight: bold">충전내역</font></td>
+			<tr>
+			<tr>
+				<th>충전내역</th>
+				<th>충전일시</th>
+			</tr>
+			<c:forEach var="charge" items="${list}">
+				<tr>
+					<td>${charge.charge_point}포인트</td>
+					<td>${charge.charge_date}</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</article>
 </body>
 </html>

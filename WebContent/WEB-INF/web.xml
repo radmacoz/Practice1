@@ -3,7 +3,22 @@
   <display-name>pandoraProject</display-name>
   <jsp-config>
     <jsp-property-group>
-      <url-pattern>/WEB-INF/views/*</url-pattern>
+	  <url-pattern>/WEB-INF/views/*</url-pattern> 
+      <include-prelude>/common/intro.jsp</include-prelude>
+      <include-coda>/common/footer.jsp</include-coda>
+    </jsp-property-group>
+    <jsp-property-group>
+      <url-pattern>/WEB-INF/uploadfile/fileUpForm.jsp</url-pattern>
+      <include-prelude>/common/intro.jsp</include-prelude>
+      <include-coda>/common/footer.jsp</include-coda>
+    </jsp-property-group>
+    <jsp-property-group>
+	  <url-pattern>/WEB-INF/logon/joinForm.jsp</url-pattern> 
+      <include-prelude>/common/intro.jsp</include-prelude>
+      <include-coda>/common/footer.jsp</include-coda>
+    </jsp-property-group>
+    <jsp-property-group>
+	  <url-pattern>/WEB-INF/logon/logonForm.jsp</url-pattern> 
       <include-prelude>/common/intro.jsp</include-prelude>
       <include-coda>/common/footer.jsp</include-coda>
     </jsp-property-group>
