@@ -49,7 +49,7 @@
 ▶ 특히 음란물 유포 행위에 대해서는 회원 탈퇴를 원칙 으로 처리되니 이점 유의하시기 바랍니다.
 ▶ 판도라웹하드 업도르자료는 홍보 마케팅 자료로도 이용할 수 있습니다.
                 </textarea></td></tr>
-            <tr><td><input type="checkbox" name="agree_chk">위 점을 확인하였고 동의합니다.<br><br><br><br></td></tr>
+            <tr><td><label for="agree_chk"><input type="checkbox" id="agree_chk" name="agree_chk">위 점을 확인하였고 동의합니다.</label><br><br><br><br></td></tr>
           </table></td></tr>
 </table>
 <center>

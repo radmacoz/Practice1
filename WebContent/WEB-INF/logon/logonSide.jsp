@@ -48,14 +48,14 @@ table.side td {
 }
 
 body {
-	width: 950px;
+	width: 1300px;
 }
 
 #sidemenu {
 	width: 250px;
 	height: 400px;
 	float: left;
-	margin-left: 5px;
+	margin-left: 100px;
 	margin-top: 0px;
 	text-align: center;
 	background-color: white;
@@ -73,14 +73,6 @@ body {
 	float: none;
 }
 
-article {
-	width: 650px;
-	height: 730px;
-	float: left;
-	margin-left: 5px;
-	margin-top: 10px;
-	border-radius: 10px;
-}
 /* 
 #sidemenu ul {
 	list-style: none;
@@ -105,7 +97,7 @@ article {
 					<td scope="row" align="center"><p id="p1">판도라 박스를 더 쉽고
 							안전하게 이용하세요</p>
 						<h3>${sessionScope['id']}님<br>반갑습니다
-						</h3> 보유포인트 : <a href="myChargeList.do">${member.mem_point}</a> <a
+						</h3><a href="myChargeList.do"> 보유포인트 : ${member.mem_point}</a> <a
 						href="logout.lo"><br>
 						<br>
 							<button id="loginbutton">로그아웃</button></a></td>

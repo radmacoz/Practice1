@@ -21,15 +21,26 @@
 	<select id="list2" parameterType="hashMap" resultMap="fileupResult">
 		select * from (select rowNum rn, a.* from (select * from fileup where category=#{category} order by file_num desc)a) where rn between #{startRow} and #{endRow}
 	</select>
-	<!-- <select id="list2" parameterType="String" resultMap="fileupResult">
+	<!-- 페이징 전 카테고리
+	<select id="list2" parameterType="String" resultMap="fileupResult">
 		select * from fileup where category=#{category}
-	</select> 페이징 전 카테고리 -->
+	</select> -->
 	<select id="list3" parameterType="hashMap" resultMap="fileupResult">
+		select * from (select rowNum rn, a.* from (select * from fileup where ${subject} like '%'||#{keyword }||'%' order by file_num desc)a) where rn between #{startRow} and #{endRow}
+	</select>
+	<select id="list4" parameterType="hashMap" resultMap="fileupResult">
+		select * from (select rowNum rn, a.* from (select * from fileup where category=#{category} and ${subject} like '%'||#{keyword }||'%' order by file_num desc)a) where rn between #{startRow} and #{endRow}
+	</select>
+	<select id="list6" parameterType="hashMap" resultMap="fileupResult">
+		select * from (select rowNum rn, a.* from (select * from fileup order by file_down desc)a) where rn between 1 and 15
+	</select>
+	<!-- 페이징 전 검색
+	 <select id="list3" parameterType="hashMap" resultMap="fileupResult">
 		select * from fileup where ${subject} like '%'||#{keyword }||'%'
 	</select>
 	<select id="list4" parameterType="hashMap" resultMap="fileupResult">
 		select * from fileup where category=#{category} and ${subject} like '%'||#{keyword }||'%'
-	</select>
+	</select> -->
 	<select id="select" parameterType="int" resultType="fileup">
 		select * from fileup where file_num=#{file_num}
 	</select>
@@ -38,7 +49,7 @@
 		<selectKey keyProperty="file_num" order="BEFORE" resultType="int">
 			select nvl(max(file_num),0)+1 from fileup
 		</selectKey>
-		insert into fileup values ( #{file_num}, #{file_name}, #{category}, #{mem_id}, #{file_desc}, #{file_shot}, #{file_upload}, #{file_size}, #{file_point}, sysdate, 'n')
+		insert into fileup values ( #{file_num}, #{file_name}, #{category}, #{mem_id}, #{file_desc}, #{file_shot}, #{file_upload}, #{file_size}, #{file_point}, sysdate, 'n', 0)
 	</insert>
 	<select id="total" resultType="int">
 		select count(*) from fileup
@@ -46,4 +57,13 @@
 	<select id="totalCategory" parameterType="String" resultType="int">
 		select count(*) from fileup where category=#{category}
 	</select>
+	<select id="totalSearch" parameterType="hashMap" resultType="int">
+		select count(*) from fileup where ${subject} like '%'||#{keyword }||'%'
+	</select>
+	<select id="totalSearch2" parameterType="hashMap" resultType="int">
+		select count(*) from fileup where category=#{category} and ${subject} like '%'||#{keyword }||'%'
+	</select>
+	<update id="down" parameterType="int">
+		update fileup set file_down=file_down+1 where file_num=#{file_num}
+	</update>
 </mapper>

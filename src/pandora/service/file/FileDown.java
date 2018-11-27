@@ -44,6 +44,10 @@ public class FileDown implements CommandProcess {
 		int up_point = down_point/2;		// 판매 수수료 50%
 		member2.setMem_point(up_point);
 		int result3 = md.upload(member2);
+		
+		// 파일 다운로드 시 파일 다운로드 수 +1 구현
+		int result4 = fd.down(file_num);
+		
 
 		request.setAttribute("result", result);
 		request.setAttribute("result2", result2);

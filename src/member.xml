@@ -26,7 +26,7 @@
 		update member set mem_del='y' where mem_id=#{mem_id}
 	</update>
 	<insert id="insert" parameterType="member">
-		insert into member values ( #{mem_id}, #{mem_passwd}, #{mem_name}, #{mem_email}, #{mem_tel}, #{mem_addr}, #{mem_birth}, sysdate, sysdate, 2, 'n', 'n', 'n')
+		insert into member values ( #{mem_id}, #{mem_passwd}, #{mem_name}, #{mem_email}, #{mem_tel}, #{mem_addr}, #{mem_birth}, sysdate, sysdate, 0, 'n', 'n', 'n')
 	</insert>
 	<update id="charge" parameterType="member">
 		update member set mem_point=(select mem_point from member where mem_id=#{mem_id})+#{mem_point} where mem_id=#{mem_id}

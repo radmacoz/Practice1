@@ -3,23 +3,34 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="chargens">
 	<resultMap type="charge" id="chargeResult">
-		<result property="charge_num"	 column="charge_num" />
-		<result property="mem_id" 		 column="mem_id" />
-		<result property="charge_date" 	 column="charge_date" />
+		<result property="charge_num"		 column="charge_num" />
+		<result property="mem_id" 		 	 column="mem_id" />
+		<result property="charge_date" 	 	 column="charge_date" />
+		<result property="charge_option" 	 column="charge_option" />
+		<result property="charge_account"  column="charge_account" />
 		<result property="charge_point" 	 column="charge_point" />
-		<result property="charge_account" 	 	 column="charge_account" />
+		<result property="charge_money" 	 column="charge_money" />
 	</resultMap>
 	
 	<insert id="insert" parameterType="charge">
 		<selectKey keyProperty="charge_num" order="BEFORE" resultType="int">
 			select nvl(max(charge_num),0)+1 from charge
 		</selectKey>
-		insert into charge values ( #{charge_num} , #{mem_id}, sysdate, #{charge_point}, #{charge_account})
+		insert into charge values ( #{charge_num} , #{mem_id}, sysdate, #{charge_option}, #{charge_account})
 	</insert>
-	<select id="chargeList" resultMap="chargeResult">
-		select * from charge
+	<select id="point" parameterType="int" resultType="int">
+		select charge_point from charge_opt where charge_option=#{charge_option}
 	</select>
-	<select id="myChargeList" parameterType="string" resultMap="chargeResult">
+	<select id="chargeList" resultMap="chargeResult">
+		select * from charge c, charge_opt o where c.charge_option=o.charge_option
+	</select>
+<!--  	<select id="myChargeList" parameterType="string" resultMap="chargeResult">
 		select * from charge where mem_id=#{mem_id}
+	</select> -->
+	<select id="myChargeList" parameterType="hashMap" resultMap="chargeResult">
+		select * from (select rowNum rn, a.* from (select c.*,charge_point,charge_money from charge c, charge_opt o where c.charge_option=o.charge_option and mem_id=#{mem_id} order by charge_date desc)a) where rn between #{startRow} and #{endRow}
+	</select>
+	<select id="total" parameterType="string" resultType="int">
+		select count(*) from charge where mem_id=#{id}
 	</select>
 </mapper>

@@ -10,7 +10,7 @@
 article {
 	width: 650px;
 	height: 800px;
-	float: right;
+	float: left;
 	margin-left: 5px;
 	margin-top: 10px;
 	border-radius: 10px;
@@ -82,7 +82,7 @@ table.fileUpForm td {
 			<tr>
 				<th>카테고리</th>
 				<td><label for="c1">도서</label> <input type="radio"
-					name="category" id="c1" value="도서"> <label for="c2">이미지</label>
+					name="category" id="c1" value="도서" checked="checked"> <label for="c2">이미지</label>
 					<input type="radio" name="category" id="c2" value="이미지"> <label
 					for="c3">동영상</label> <input type="radio" name="category" id="c3"
 					value="동영상"> <label for="c4">음악</label> <input type="radio"

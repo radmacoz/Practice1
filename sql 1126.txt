@@ -1,0 +1,75 @@
+drop table member;
+drop table fileup;
+drop table charge_opt;
+drop table charge;
+drop table download;
+drop table req_board;
+
+
+create table member (
+  mem_id varchar2(20) primary key, mem_passwd varchar2(20) not null,
+  mem_name varchar2(20) not null, mem_email varchar2(20) not null,
+  mem_tel varchar2(20) not null, mem_addr varchar2(20) not null,
+  mem_birth varchar2(20) not null, mem_reg_date date not null,
+  mem_update_date date not null, mem_point number(10) not null,
+  mem_del varchar2(5) not null, mem_vip varchar2(5) default 'n',
+  mem_vip_app varchar2(5) default 'n'
+);
+
+
+create table fileup (
+  file_num number(10) primary key, file_name varchar2(50) not null,
+  category varchar2(20) not null, mem_id varchar2(20) references member (mem_id),
+  file_desc varchar2(500), file_shot varchar2(50), file_upload varchar2(50),
+  file_size number(10) not null, 
+  file_point number(10) not null, file_date date not null,
+  file_del varchar2(5) not null
+);
+
+create table download (
+  down_num number(15) primary key, file_num number(10) not null references fileup(file_num),
+  down_date date not null, down_id varchar2(20) not null references member(mem_id)
+);
+
+create table charge_opt (charge_option number(2) not null primary key,
+  charge_point number(10) not null,
+  charge_money number(10) not null
+);
+insert into charge_opt values(1,4000,5000);
+insert into charge_opt values(2,10000,10000);
+insert into charge_opt values(3,25000,20000);
+insert into charge_opt values(4,80000,50000);
+insert into charge_opt values(5,200000,100000);
+
+create table charge (charge_num number(15) not null primary key,
+  mem_id varchar2(20) not null references member(mem_id),
+  charge_date date not null,
+  charge_option number(2) not null references charge_opt(charge_option),
+  charge_account varchar2(20)
+);
+
+create table req_board(
+  board_num number(10) not null primary key,
+  mem_id varchar2(20) not null,
+  board_subject varchar2(50) not null,
+  board_content varchar2(500) not null,
+  board_readcount number(10) not null,
+  board_ref number(10) null,
+  board_re_step number(10) not null,
+  board_re_level number(10) not null,
+  board_re_date date not null,
+  board_del varchar2(5) not null,
+  category varchar2(20) not null
+);
+
+select * from member;
+select * from fileup;
+select * from charge_opt;
+select * from charge;
+select * from download;
+select * from req_board;
+
+alter table member add (mem_vip_app varchar2(5) default 'n');
+alter table download rename column mem_id to down_id;
+
+commit;

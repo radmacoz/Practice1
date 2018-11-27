@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +18,15 @@
 	}
 </script>
 <style type="text/css">
+
+.out {
+	 width: 100%;
+	 text-align: center;
+ }
+.in {
+	 display: inline-block;
+ }
+
 table.filesearch {
 	margin: 10px;
 	border-collapse: collapse;
@@ -70,7 +80,6 @@ button.sub_button:hover {
 <body>
 	<c:set var="id" value="${sessionScope['id']}"></c:set>
 	<table class="filesearch" border="1">
-		<caption>파일 목록</caption>
 		<thead>
 			<tr>
 				<th width="350px">제목</th>
@@ -81,6 +90,9 @@ button.sub_button:hover {
 			</tr>
 		</thead>
 		<tbody>
+			<c:if test="${fn:length(list)==0 }">
+				<tr><td colspan="5">검색조건에 맞는 자료가 존재하지 않습니다</td></tr>
+			</c:if>
 			<c:forEach var="fileup" items="${list}">
 				<tr>
 					<th><button class="sub_button"
@@ -93,5 +105,18 @@ button.sub_button:hover {
 			</c:forEach>
 		</tbody>
 	</table>
+	<div class="out">
+		<div class="in">
+			<c:if test="${ startPage > pagePerBlock }">
+				<input type="button" onclick="s2('${category }','${subject }','${keyword }',${startPage-1})" value="이전">
+			</c:if>
+			<c:forEach var="i" begin="${startPage}" end="${endPage}">
+				<input type="button" onclick="s1('${category }','${subject }','${keyword }',${i})" value="${i}">
+			</c:forEach>
+			<c:if test="${endPage<totPage}">
+				<input type="button" onclick="s3('${category }','${subject }','${keyword }',${endPage+1})" value="다음">
+			</c:if>
+		</div>
+	</div>
 </body>
 </html>

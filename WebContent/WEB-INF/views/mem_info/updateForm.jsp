@@ -11,7 +11,7 @@
 article {
 	width: 650px;
 	height: 800px;
-	float: right;
+	float: left;
 	margin-left: 5px;
 	margin-top: 10px;
 	border-radius: 10px;
@@ -53,9 +53,9 @@ table.updateForm td {
 </style>
 <script type="text/javascript">
 	function chk() {
-		if (frm.password.value != frm.password2.value) {
+		if (frm2.password.value != frm2.password2.value) {
 			alert("암호와 암호확인이 다릅니다");
-			frm.password.focus();
+			frm2.password.focus();
 			return false;
 		}
 	}
@@ -66,7 +66,7 @@ table.updateForm td {
 	<jsp:include page="../../logon/logonSide.jsp"></jsp:include>
 	<!-- ====================== 사이드 메뉴 끝 ====================== -->
 	<article>
-		<form action="update.do" method="post" name="frm"
+		<form action="update.do" method="post" name="frm2"
 			onsubmit="return chk()">
 			<input type="hidden" name="id" value="${member.mem_id}">
 			<table border="1" class="updateForm">

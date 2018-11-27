@@ -8,7 +8,7 @@ public class Download {
 	private Date down_date;	// 다운로드 일시
 	private String down_id;	// 구매자 아이디
 	private int file_num;	// 파일 번호(f.k)
-	// f.k로 참조하여 file up 으로부터 불러오는 컬럼
+	// f.k로 참조하여 fileup 으로부터 불러오는 컬럼
 	private String file_name;	// 업로더가 지정한 파일 제목
 	private int file_point;	// 파일 포인트
 	private int file_size;		// 파일 용량

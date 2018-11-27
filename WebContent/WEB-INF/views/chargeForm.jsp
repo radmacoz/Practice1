@@ -14,7 +14,7 @@ article {
 	height: 800px;
 	float: left;
 	margin-left: 5px;
-	margin-top: 0px;
+	margin-top: 10px;
 	border-radius: 10px;
 }
 
@@ -108,28 +108,28 @@ table.charge2 td {
 						<th>충전 금액</th>
 						<th width="130">충전 포인트</th>
 					<tr>
-						<td><label for="opt1"><input type="radio" name="charge" value="4000"
+						<td><label for="opt1"><input type="radio" name="charge" value="1"
 							checked="checked" id="opt1">옵션1</label></td>
 						<td>5,000원</td>
 						<td>4,000 point</td>
 					</tr>
 					<tr>
-						<td><label for="opt2"><input type="radio" name="charge" value="10000" id="opt2">옵션2</label></td>
+						<td><label for="opt2"><input type="radio" name="charge" value="2" id="opt2">옵션2</label></td>
 						<td>10,000원</td>
 						<td>10,000 point</td>
 					</tr>
 					<tr>
-						<td><label for="opt3"><input type="radio" name="charge" value="25000" id="opt3">옵션3</label></td>
+						<td><label for="opt3"><input type="radio" name="charge" value="3" id="opt3">옵션3</label></td>
 						<td>20,000원</td>
 						<td>25,000 point</td>
 					</tr>
 					<tr>
-						<td><label for="opt4"><input type="radio" name="charge" value="80000" id="opt4">옵션4</label></td>
+						<td><label for="opt4"><input type="radio" name="charge" value="4" id="opt4">옵션4</label></td>
 						<td>50,000원</td>
 						<td>80,000 point</td>
 					</tr>
 					<tr>
-						<td><label for="opt5"><input type="radio" name="charge" value="200000" id="opt5">옵션5</label></td>
+						<td><label for="opt5"><input type="radio" name="charge" value="5" id="opt5">옵션5</label></td>
 						<td>100,000원</td>
 						<td>200,000 point</td>
 					</tr>
@@ -146,15 +146,15 @@ table.charge2 td {
 					</tr>
 					<tr>
 						<th>예금주명</th>
-						<td><input type="text" name="acc_name"></td>
+						<td><input type="text" name="acc_name" value="이지운"></td>
 					</tr>
 					<tr>
 						<th>은행명</th>
-						<td><input type="text" name="acc_bank"></td>
+						<td><input type="text" name="acc_bank" value="신한(구조흥)"></td>
 					</tr>
 					<tr>
 						<th>계좌번호</th>
-						<td><input type="text" name="acc_number"></td>
+						<td><input type="text" name="acc_number" value="464-712-668713"></td>
 					</tr>
 				</table>
 				<p>

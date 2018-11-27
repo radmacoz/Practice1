@@ -68,7 +68,18 @@ public class FileUpDao {
 	public int total(String category) {
 		return (int) session.selectOne("fileupns.totalCategory", category);
 	}
-
+	/*페이징을 위해 검색에 해당하는 목록의 개수를 구하는 메소드*/
+	public int totalSearch(HashMap<String, Object> hm) {
+		return (int) session.selectOne("fileupns.totalSearch", hm);
+	}
+	/*페이징을 위해 검색에 해당하는 목록의 개수를 구하는 메소드(카테고리가 있는 경우)*/
+	public int totalSearch2(HashMap<String, Object> hm) {
+		return (int) session.selectOne("fileupns.totalSearch2", hm);
+	}
+	/*인기 top15 목록을 반환하는 메소드*/
+	public List<FileUp> list6() {
+		return session.selectList("fileupns.list6");
+	}
 	/* 참고 메소드 목록
 	public FileUp select(String id) {
 		return (FileUp) session.selectOne("memberns.select", id);
@@ -83,4 +94,8 @@ public class FileUpDao {
 		return session.insert("memberns.insert", member);
 	}
 	*/
+	/*다운로드 시 다운로드 수 +1 시키는 메소드*/
+	public int down(int file_num) {
+		return session.update("fileupns.down", file_num);
+	}
 }

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="sessionChk.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,7 +80,7 @@ article {
 	height: 800px;
 	float: left;
 	margin-left: 5px;
-	margin-top: 0px;
+	margin-top: 10px;
 	border-radius: 10px;
 }
 
@@ -111,6 +112,17 @@ table.chargeList td {
 	border-right: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 }
+
+.out {
+	 width: 100%;
+	 text-align: left;
+ }
+.in {
+	 display: inline-block;
+ }
+div.paging {
+	text-align: center;
+	}
 </style>
 </head>
 <body>
@@ -123,19 +135,51 @@ table.chargeList td {
 	<article>
 		<table border="1" class="chargeList">
 			<tr>
-				<td colspan="2"><font size="4" style="font-weight: bold">충전내역</font></td>
+				<td colspan="3"><font size="4" style="font-weight: bold">충전내역</font></td>
 			<tr>
 			<tr>
-				<th>충전내역</th>
-				<th>충전일시</th>
+				<th>충전 포인트</th>
+				<th>충전 금액</th>
+				<th>충전 일시</th>
 			</tr>
+			<c:if test="${fn:length(list)==0 }">
+				<tr><td colspan="5" align="center">충전 내역이 존재하지 않습니다</td></tr>
+			</c:if>
 			<c:forEach var="charge" items="${list}">
 				<tr>
 					<td>${charge.charge_point}포인트</td>
+					<td>${charge.charge_money}원</td>
 					<td>${charge.charge_date}</td>
 				</tr>
 			</c:forEach>
 		</table>
+		
+		
+		<div class="paging">
+			<c:if test="${startPage > pagePerBlock }">
+				<a href="myChargeList.do?pageNum=${startPage-1 }">이전</a>
+			</c:if>
+			<c:forEach var="i" begin="${startPage}" end="${endPage}">
+				<a href="myChargeList.do?pageNum=${i}">[${i}]</a>
+			</c:forEach>
+			<c:if test="${endPage < totPage }">
+				<a href="myChargeList.do?pageNum=${endPage+1 }">다음</a>
+			</c:if>
+		</div>
+		
 	</article>
+	<script type="text/javascript">
+		
+	function a1(n) {
+		$('article').load("myChargeList.do?pageNum="+n);
+	}
+	function a2(n) {
+		$('article').load("myChargeList.do?pageNum="+n);
+	}
+	function a3(n) {
+		$('article').load("myChargeList.do?pageNum="+n);
+	}
+	
+	</script>
 </body>
 </html>

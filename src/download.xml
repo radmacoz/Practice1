@@ -19,7 +19,14 @@
 		</selectKey>
 		insert into download values ( #{down_num}, #{file_num}, sysdate, #{down_id})
 	</insert>
-	<select id="myDownList" parameterType="string" resultMap="downloadResult">
+<!-- 	<select id="myDownList" parameterType="string" resultMap="downloadResult">
 		select * from download d, fileup f where d.file_num=f.file_num and down_id=#{mem_id} order by down_date desc
+	</select> -->
+	
+	<select id="myDownList" parameterType="hashMap" resultMap="downloadResult">
+		select * from (select rowNum rn, a.* from ( select f.*, down_num, down_date, down_id from download d, fileup f where d.file_num=f.file_num and d.down_id=#{mem_id} order by d.down_date desc ) a) where rn between #{startRow} and #{endRow}
+	</select>
+	<select id="total" parameterType="string" resultType="int">
+		select count(*) from download where down_id=#{down_id}
 	</select>
 </mapper>

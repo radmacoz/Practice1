@@ -1,0 +1,7 @@
+수정 목록
+FileSearch.java - 그대로 복붙
+fileSearch.jsp - 그대로 복붙
+fileup.xml - <select 구문 수정 및 추가>
+fileupDao.java - 메소드 수정 및 추가
+pandoraMain.jsp - 아래 자바스크립트 s1,s2,s3 추가
+intro.jsp - 검색어를 한자 이상 입력하도록 required 추가

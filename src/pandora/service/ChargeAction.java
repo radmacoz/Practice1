@@ -21,14 +21,14 @@ public class ChargeAction implements CommandProcess {
 		
 			/*String id = request.getParameter("id");*/
 			
-			int charge_point = Integer.parseInt(request.getParameter("charge"));
+			int charge_option = Integer.parseInt(request.getParameter("charge"));
 			String acc_number = request.getParameter("acc_number");
 			
 			Charge charge = new Charge();
 			
 			
 			charge.setMem_id(id);
-			charge.setCharge_point(charge_point);
+			charge.setCharge_option(charge_option);
 			charge.setCharge_account(acc_number);
 			
 			ChargeDao cd = ChargeDao.getInstance();
@@ -36,6 +36,8 @@ public class ChargeAction implements CommandProcess {
 			request.setAttribute("result1", result1);
 			
 			Member member = new Member();
+			
+			int charge_point = cd.point(charge_option);
 			
 			member.setMem_id(id);
 			member.setMem_point(charge_point);

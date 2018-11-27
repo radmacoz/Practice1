@@ -4,11 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
+<meta charset="UTF-8"><title>판도라 박스에 오신 것을 환영합니다</title>
 <style type="text/css">
-
 .out {
 	 width: 100%;
 	 text-align: center;
@@ -59,15 +56,31 @@ button.sub_button:hover {
 	text-decoration: underline;
 	background-color: #BDBDBD;
 }
+article {
+	width: 700px;
+	height: 730px;
+	float: left;
+	margin-left: 5px;
+	margin-top: 10px;
+	border-radius: 10px;
+}
 
 </style>
 </head>
 <body>
+
+	<!-- ====================== 사이드 메뉴 시작 ====================== -->
+	<jsp:include page="../logon/logonSide.jsp"></jsp:include>
+	<!-- ====================== 사이드 메뉴 끝 ====================== -->
 <c:set var="id" value="${sessionScope['id']}"></c:set>
+<c:set var="index" value='0'></c:set>
+
+<article>
 	<table class="filelist" border="1">
 		<thead>
 			<tr>
-				<th width="450px">제목</th>
+				<th width="50px">순위</th>
+				<th width="400px">제목</th>
 				<th width="50px">분류</th>
 				<th width="60px">포인트</th>
 				<th width="60px">용량</th>
@@ -75,9 +88,16 @@ button.sub_button:hover {
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="fileup" items="${list}">
-				<%-- <c:set var="file_num" value="${fileup.file_num}"></c:set> --%>
-				<tr>
+			<c:forEach var="fileup" items="${list6}">
+				
+				<tr><%-- <c:forEach var="i" begin="1" end="15"><td>${i}</td></c:forEach> --%>
+					<c:set var="index" value="${index+1 }"></c:set>
+					<c:if test="${index<4 }">
+					<td style="color: red; font-weight: bold;">Top${index }</td>
+					</c:if>
+					<c:if test="${index>=4 }">
+					<td>Top${index }</td>
+					</c:if>
 					<th><button class="sub_button"
 							onclick="chk('${fileup.file_num}','${id}')">${fileup.file_name}</button></th>
 					<td>${fileup.category }</td>
@@ -87,27 +107,8 @@ button.sub_button:hover {
 				</tr>
 			</c:forEach>
 		</tbody>
-		<%-- <c:forEach var="fileup" items="${list}">
-	<tr><td><a href="fileSelect.up?file_num=${fileup.file_num }">${fileup.file_name }</a></td><td>${fileup.category }</td>
-		<td>${fileup.file_point }</td><td>${fileup.file_size }</td><td>${fileup.mem_id }</td></tr>
-</c:forEach> --%>
 	</table>
-
-	<div class="out">
-		<div class="in">
-			<c:if test="${ startPage > pagePerBlock }">
-				<input type="button" onclick="a2('${category }',${startPage-1})" value="이전" class="sub_button">
-				<%-- <a href="main.do?pgm=fileList.up?pageNum=${startPage-1}">[이전]</a> --%>
-			</c:if>
-			<c:forEach var="i" begin="${startPage}" end="${endPage}">
-				<input type="button" onclick="a1('${category }',${i})" value="${i}"  class="sub_button">
-			</c:forEach>
-			<c:if test="${endPage<totPage}">
-				<input type="button" onclick="a3('${category }',${endPage+1})" value="다음"  class="sub_button">
-				<%-- <a href="main.do?pgm=fileList.up?pageNum=${endPage+1}">[다음]</a> --%>
-			</c:if>
-		</div>
-	</div>
+</article>
 
 	<script type="text/javascript">
 	function chk(file_num,id) {

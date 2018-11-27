@@ -28,6 +28,5 @@
 		<mapper resource="download.xml" />
 		<mapper resource="charge.xml" />
 		<mapper resource="req_board.xml" /> 
-	<!-- 		<mapper resource="charge_op.xml" /> -->
 	</mappers>
 </configuration>

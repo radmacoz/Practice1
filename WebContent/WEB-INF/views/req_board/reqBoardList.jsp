@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +37,6 @@ table.side th {
 	border-left: 1px solid #fff;
 	background: #eee;
 } */
-
 table.side td {
 	width: 350px;
 	padding: 10px;
@@ -79,37 +78,47 @@ article {
 	height: 800px;
 	float: left;
 	margin-left: 5px;
-	margin-top: 0px;
+	margin-top: 10px;
 	border-radius: 10px;
 }
 
 table.reqbo {
-    border-collapse: collapse;
-    text-align: left;
-    line-height: 1.5;
-    border-left: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-  	margin : 10px 10px;
-  	font-size: 13px;
+	border-collapse: collapse;
+	text-align: left;
+	line-height: 1.5;
+	border-left: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	margin: 10px 10px;
+	font-size: 13px;
 }
+
 table.reqbo th {
-    /* width: 147px; */
-    padding: 10px;
-    font-weight: bold;
-    vertical-align: top;
-    color: #153d73;
-    border-right: 1px solid #ccc;
-    border-bottom: 3px solid #369;
-
+	/* width: 147px; */
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	color: #153d73;
+	border-right: 1px solid #ccc;
+	border-bottom: 3px solid #369;
 }
+
 table.reqbo td {
-    /* width: 349px; */
-    padding: 10px;
-    vertical-align: top;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+	/* width: 349px; */
+	padding: 10px;
+	vertical-align: top;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
 }
 
+
+.out {
+	 width: 60%;
+	 text-align: center;
+ }
+.in {
+	 display: inline-block;
+ }
+ 
 </style>
 </head>
 <body>
@@ -164,9 +173,15 @@ table.reqbo td {
 				<a href="reqBoardList.do?pageNum=${endPage+1 }">다음</a>
 			</c:if>
 		</div>
-		<a href="requestForm.do"><button>자료 요청하기</button></a> <a
-			href="reqBoardList.do?writer=${req_board.mem_id }"><button>내가
-				신청한 자료</button></a> <a href="main.do"><button>메인으로</button></a>
+		<p>
+
+	<div class="out">
+		<div class="in">
+			<a href="requestForm.do"><button>자료 요청하기</button></a>
+			<a href="reqBoardList.do?writer=${req_board.mem_id }"><button>내가 신청한 자료</button></a>
+			<a href="main.do"><button>메인으로</button></a>
+		</div>
+	</div>
 	</article>
 </body>
 </html>

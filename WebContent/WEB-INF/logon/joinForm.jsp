@@ -6,18 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" href="../css/join.css">
-<link rel="stylesheet" href="../css/base.css">
-<link rel="stylesheet" href="../css/pdsr.css">
-<link rel="stylesheet" href="../css/button.css">
-
-<link
-	href='https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css'
-	rel='stylesheet' type='text/css'>
-<link
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
-	rel="stylesheet">
-
 <style type="text/css">
 a {
 	text-decoration: none;
@@ -76,42 +64,47 @@ article {
 	height: 800px;
 }
 </style>
+<script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript">
 	function chk() {
-		if (frm.password.value != frm.password2.value) {
+		if (frm1.password.value != frm1.password2.value) {
 			alert("암호와 암호확인이 다릅니다");
-			frm.password.focus();
+			frm1.password.focus();
+		
 			return false;
 		}
-		if (!frm.agree_chk.checked) {
+ 		if (!frm1.agree_chk.checked) {
 			alert("약관확인 후 체크해주세요");
-			frm.agree_chk.focus();
+			frm1.agree_chk.focus();
 			return false;
-		}
+		} 
 	}
 
 	function idChk() {
-		if (!frm.id.value) {
+		if (!$('#id').val()) {
 			alert("아이디 입력하고 체크하세요");
-			frm.id.focus();
+			frm1.id.focus();
 			return;
 		}
-		window.open("idChk.lo?id=" + frm.id.value, "", "width=400 height=300");
+		
+		/* window.open("idChk.lo?id=" + frm.id.value, "", "width=400 height=300"); */
+		$.post('idChk.lo','id='+$('#id').val(), function(data) {
+			$('#disp').html(data);
+		});
 	}
 </script>
 </head>
 <body>
 <article>
 	<div id="a1" style="margin-left: 10%; margin-right: 20%;">
-		<form action="join.lo" method="post" name="frm"
-			onsubmit="return chk()">
+		<form action="join.lo" method="post" name="frm1"		onsubmit="return chk()">
 			<h2>회원 가입</h2>
 			<table border="1" class="joinForm">
 				<tr>
 					<th>아이디</th>
 					<td><input type="text" name="id" placeholder="대소문자와 숫자만 가능"
-						required="required" autofocus="autofocus">&nbsp;&nbsp;<input
-						type="button" value="중복체크" onclick="idChk()"></td>
+						required="required" autofocus="autofocus" id="id">&nbsp;&nbsp;
+						<input type="button" value="중복체크" onclick="idChk()"><div id="disp" class="err"></div></td>
 				</tr>
 				<tr>
 					<th>암호</th>
@@ -160,8 +153,7 @@ article {
                 </textarea></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="checkbox" name="agree_chk">위
-						점을 확인하였고 동의합니다.</td>
+					<td colspan="2"><label for="agree_chk"><input type="checkbox" id="agree_chk" name="agree_chk">위 점을 확인하였고 동의합니다.</label></td>
 				</tr>
 
 			</table>

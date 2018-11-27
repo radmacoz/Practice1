@@ -1,6 +1,7 @@
 package pandora.dao;
 
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -9,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import pandora.model.Download;
+import pandora.model.Member;
 
 public class DownloadDao {
 	private static DownloadDao instance = new DownloadDao();
@@ -31,7 +33,14 @@ public class DownloadDao {
 	public int insert(Download download) {
 		return session.insert("downloadns.insert", download);
 	}
-	public List<Download> myDownList(String id) {
-		return session.selectList("downloadns.myDownList", id);
+	public List<Download> myDownList(int startRow, int endRow, String mem_id) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("startRow", startRow);
+		hm.put("endRow", endRow);
+		hm.put("mem_id", mem_id);
+		return session.selectList("downloadns.myDownList", hm);
+	}
+	public int total(String down_id) {
+		return (int) session.selectOne("downloadns.total", down_id);
 	}
 }

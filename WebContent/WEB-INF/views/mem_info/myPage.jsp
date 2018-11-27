@@ -51,15 +51,6 @@ body {
 	width: 950px;
 }
 
-#sidemenu {
-	width: 250px;
-	height: 400px;
-	float: left;
-	margin-left: 5px;
-	margin-top: 10px;
-	text-align: center;
-	background-color: white;
-}
 
 #p1 {
 	font-weight: lighter;
@@ -78,7 +69,7 @@ article {
 	height: 800px;
 	float: left;
 	margin-left: 5px;
-	margin-top: 0px;
+	margin-top: 10px;
 	border-radius: 10px;
 }
 

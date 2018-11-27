@@ -7,7 +7,7 @@
 <title>판도라 박스에 오신 것을 환영합니다</title>
 <style type="text/css">
 #tframe		{
-	width: 950px;
+	width: 1100px;
 	height: 170px;
 	border: none;
 	clear: both;
@@ -24,7 +24,7 @@
 	height: 40px;
 	float: left;
 	margin-top: 30px;
-	margin-left: 140px;
+	margin-left: 230px;
 }
 
 #search {
@@ -84,7 +84,7 @@
 	</div>
 	<div id="search">
 <!-- 		<form action="fileSearch.up"> -->
-		<form action="" name="frm" method="post" onsubmit="fetchSearch()">
+		<form action="" name="frm" method="post">
 			<select style="height: 22px" name="cate">
 				<optgroup label="카테고리">
 					<option value="">전체</option>
@@ -98,12 +98,12 @@
 			</select>
 			<select style="height: 22px" name="subject">
 				<optgroup label="선택">
-					<option value="mem_id">작성자</option>
+					<option value="mem_id">판매자</option>
 					<option value="file_name">제목</option>
 				</optgroup>
 			</select>
-			<input type="text" name="keyword" size="35" placeholder="원하는 검색어를 입력하세요">
-			<input type="submit" value="검색">
+			<input type="text" name="keyword" size="35" placeholder="원하는 검색어를 입력하세요" required="required">
+			<input type="button" onclick="fetchSearch()" value="검색">
 		</form>
 	</div>
 	<script type="text/javascript">
@@ -114,6 +114,7 @@
 
 	<div id="category">
 		<ul>
+			<li><a href="mainTop.do">Top15</a></li>
 			<li><a href="main.do" onclick="fetchPage('fileList.up')">전체</a></li>
 			<li><a href="main.do#!fileList.up?category=도서" onclick="fetchPage('fileList.up?category=도서')">도서</a></li>
 			<li><a href="main.do#!fileList.up?category=이미지" onclick="fetchPage('fileList.up?category=이미지')">이미지</a></li>

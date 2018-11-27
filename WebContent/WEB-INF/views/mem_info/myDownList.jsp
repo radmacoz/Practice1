@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="sessionChk.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,13 +10,20 @@
 <title>Insert title here</title>
 <style type="text/css">
 
+.out {
+	 width: 100%;
+	 text-align: center;
+ }
+.in {
+	 display: inline-block;
+ }
 
 article {
-	width: 650px;
+	width: 800px;
 	height: 800px;
 	float: left;
 	margin-left: 5px;
-	margin-top: 0px;
+	margin-top: 10px;
 	border-radius: 10px;
 }
 
@@ -60,6 +68,7 @@ button.sub_button:hover {
 	background-color: #BDBDBD;
 }
 
+div.paging { margin-left: 50%; }
 </style>
 </head>
 <body>
@@ -73,17 +82,20 @@ button.sub_button:hover {
 		<table border="1" class="myDownList">
 			<tr><td colspan="7"><font size="4" style="font-weight: bold">다운로드 내역</font></td>
 			<tr>
-				<th width="40px">파일 번호</th>
-				<th width="200px">파일 제목</th>
+				<th width="80px">파일 번호</th>
+				<th width="300px">파일 제목</th>
 				<th width="60px">포인트</th>
 				<th width="60px">용량</th>
 				<th width="60px">업로더</th>
 				<th width="120px">다운로드 날짜</th>
 				<th width="100px">다시 받기</th>
 			</tr>
+			<c:if test="${fn:length(list)==0 }">
+				<tr><td colspan="7" align="center">다운로드 내역이 존재하지 않습니다</td></tr>
+			</c:if>
 			<c:forEach var="download" items="${list}">
 				<tr>
-					<td>${download.file_num}</td>
+					<td>&nbsp;${download.file_num}</td>
 					<td>${download.file_name}</td>
 					<td>${download.file_point}pt</td>
 					<td>${download.file_size/1000}KB</td>
@@ -93,6 +105,21 @@ button.sub_button:hover {
 				</tr>
 			</c:forEach>
 		</table>
+		
+		<div class="out">
+			<div class="in">
+				<c:if test="${startPage > pagePerBlock }">
+					<a href="myDownList.do?pageNum=${startPage-1 }">이전</a>
+				</c:if>
+				<c:forEach var="i" begin="${startPage}" end="${endPage}">
+					<a href="myDownList.do?pageNum=${i}">[${i}]</a>
+				</c:forEach>
+				<c:if test="${endPage < totPage }">
+					<a href="myDownList.do?pageNum=${endPage+1 }">다음</a>
+				</c:if>
+			</div>
+		</div>
+		
 	<script type="text/javascript">
 	function redown(file_num,id) {
 		window.open("fileReSelect.up?file_num="+file_num+"&id="+id,"", "width=800 height=800");

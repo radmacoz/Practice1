@@ -25,18 +25,6 @@ table.side {
 	border-left: 1px solid #ccc;
 	margin: 20px 10px;
 }
-/* 
-table.side th {
-	width: 250px;
-	padding: 10px;
-	font-weight: bold;
-	vertical-align: top;
-	border-right: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	border-top: 1px solid #fff;
-	border-left: 1px solid #fff;
-	background: #eee;
-} */
 
 table.side td {
 	width: 350px;
@@ -49,17 +37,7 @@ table.side td {
 }
 
 body {
-	width: 950px;
-}
-
-#sidemenu {
-	width: 250px;
-	height: 400px;
-	float: left;
-	margin-left: 5px;
-	margin-top: 0px;
-	text-align: center;
-	background-color: white;
+	width: 1200px;
 }
 
 #p1 {
@@ -75,7 +53,7 @@ body {
 }
 
 article {
-	width: 650px;
+	width: 700px;
 	height: 730px;
 	float: left;
 	margin-left: 5px;
@@ -119,9 +97,9 @@ article {
 			window.open("fileSelect.up?file_num=" + file_num + "&id=" + id, "",
 					"width=800 height=800");
 		}
-		<!-- ==================== uploadList Fetch ==================== -->
+		/* uploadList Fetch */
 		
-		<!-- ====================== 페이징 시작 ====================== -->
+		/* 페이징 시작 */
 		
 		function a1(ca, n) {
 			$('article').load("fileList.up?category="+ca+"&pageNum="+n);
@@ -132,7 +110,20 @@ article {
 		function a3(ca, n) {
 			$('article').load("fileList.up?category="+ca+"&pageNum="+n);
 		}
-		<!-- ====================== 페이징 끝 ====================== -->
+		/* 페이징 끝 */
+		
+		/* 검색 페이징 시작 */
+		function s1(ca, sub, key, n) {
+			$('article').load("fileSearch.up?cate="+ca+"&subject="+sub+"&keyword="+key+"&pageNum="+n);
+		}
+		function s2(ca, sub, key, n) {
+			$('article').load("fileSearch.up?cate="+ca+"&subject="+sub+"&keyword="+key+"&pageNum="+n);
+		}
+		function s3(ca, sub, key, n) {
+			$('article').load("fileSearch.up?cate="+ca+"&subject="+sub+"&keyword="+key+"&pageNum="+n);
+		}
+		/* 검색 페이징 끝 */
+		
 		
 	</script>
 </body>

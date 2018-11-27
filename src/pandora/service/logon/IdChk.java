@@ -18,7 +18,8 @@ public class IdChk implements CommandProcess {
 		if(member != null) result = 1;
 		request.setAttribute("result", result);
 		request.setAttribute("id", id);
-		return "idChk";
+		/*return "idChk";*/
+		return "idChk2";
 	}
 
 }
